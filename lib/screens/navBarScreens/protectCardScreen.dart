@@ -100,47 +100,37 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(width: MediaQuery.of(context).size.width / 15),
-                    Text(
-                      "Leaderboard",
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-                    )
-                  ],
-                ),
 
-                Container(
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: firestore
-                        .collection('users')
-                        .orderBy('protect_points', descending: true)
-                        .snapshots(),
-//                    builder: (context, snapshot) {
-//                      if (!snapshot.hasData)
-//                        return Center(child: CircularProgressIndicator());
-//                      return ListView.builder(
-//                        primary: false,
-//                        itemExtent: 80.0,
-//                        itemCount: snapshot.data.documents.length,
-//                        itemBuilder: (context, index) => _buildUserCard(
-//                          context,
-//                          snapshot.data.documents[index],
-//                        ),
-//                      );
-//                    },
-                    builder: (context, snapshot) {
-                      if(!snapshot.hasData){
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      return leaderboardBuilder(context,snapshot);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height/25,
-                ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(width: MediaQuery.of(context).size.width / 15),
+                Text(
+                  "Leaderboard",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                )
+              ],
+            ),
+
+            Container(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: firestore
+                    .collection('users')
+                    .orderBy('protect_points', descending: true)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if(!snapshot.hasData){
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  return leaderboardBuilder(context,snapshot);
+                },
+              ),
+            ),
+
+            SizedBox(
+              height: MediaQuery.of(context).size.height/25,
+            ),
+
               ],
             ),
           ),

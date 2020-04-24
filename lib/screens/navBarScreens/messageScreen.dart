@@ -112,12 +112,14 @@ class _MessageScreenState extends State<MessageScreen> {
                   ),
                   FlatButton(
                     onPressed: () {
-                      messageTextController.clear();
-                      _firestore.collection('global_chat').add({
-                        'text': messageText,
-                        'sender': loggedInUserName,
-                        'timestamp': FieldValue.serverTimestamp(),
-                      });
+                      if(messageTextController.text != "") {
+                        messageTextController.clear();
+                        _firestore.collection('global_chat').add({
+                          'text': messageText,
+                          'sender': loggedInUserName,
+                          'timestamp': FieldValue.serverTimestamp(),
+                        });
+                      }
                     },
                     child: Text(
                       'Send',
