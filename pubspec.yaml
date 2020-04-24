@@ -24,6 +24,7 @@ dependencies:
   bottom_navy_bar:
   simple_animations: ^1.1.3
   page_transition: ^1.1.4
+  curved_navigation_bar:
 
 
 dev_dependencies:

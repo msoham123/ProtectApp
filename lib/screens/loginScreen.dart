@@ -3,6 +3,7 @@ import 'package:protect/animations/buttonLoginAnimation.dart';
 import 'package:protect/components/customTextfield.dart';
 import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/animations/dashAnimation.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:protect/navScreen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -176,7 +177,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: MediaQuery.of(context).size.height/14,
                               width: MediaQuery.of(context).size.width/2.8,
                               child: FlatButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => NavScreen()));
+                                },
                                 color: Colors.deepPurpleAccent,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
