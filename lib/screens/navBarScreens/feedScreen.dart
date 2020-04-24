@@ -174,7 +174,7 @@ class _FeedScreenState extends State<FeedScreen> {
                       "${document['description']}"
                           .replaceAll(']' '', '')
                           .replaceAll('[', ""),
-                      maxLines: 4,
+                      maxLines: 3,
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.w500),
                     )),

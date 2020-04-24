@@ -72,6 +72,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: true,
+        actions: <Widget>[IconButton(icon: Icon(Icons.share,color: Colors.white,),onPressed: (){},)],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -179,6 +180,33 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                     ),
                     decoration: BoxDecoration(
                       color: Colors.orange,
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async{
+                    _showDialog(context);
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Donate',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(
+                          Icons.attach_money,
+                          color: Colors.white,
+                          size: 18.0,
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
                       borderRadius: BorderRadius.all(Radius.circular(5.0)),
                     ),
                   ),
@@ -417,28 +445,195 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       )
                     ],
                   ),
+
                   SizedBox(
-                    height: 50.0,
+                    height: MediaQuery.of(context).size.height/15,
                   ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 50.0),
-                    width: MediaQuery.of(context).size.width / 1.5,
-                    child: RaisedButton(
-                      onPressed: () async {
-                        _showDialog(context);
-                      },
-                      color: Colors.white,
-                      textColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.purpleAccent),
+
+
+                  Row(
+                    children: <Widget>[
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Challenges",
+                              style: kTitleTextstyle,
+                            ),
+                          ],
+                        ),
                       ),
-                      child: Text(
-                        'Donate today!',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ),
+                      Spacer(),
+                    ],
                   ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              print('Get Tested');
+                            },
+                            child: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              decoration: BoxDecoration(
+                                color: Colors.deepPurple,
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Flexible(
+                            child: Text(
+                              'Read 10 Articles',
+                              maxLines: 2,
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width/10,
+                          ),
+                          Flexible(
+                            child: Text(
+                              '+5 Protect Points',
+                              style: TextStyle(color: Colors.deepPurpleAccent),
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height/65,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              print('Get Tested');
+                            },
+                            child: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              decoration: BoxDecoration(
+                                color: Colors.deepPurple,
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Flexible(
+                            child: Text(
+                              'Donate to the cause',
+                              maxLines: 2,
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width/10,
+                          ),
+                          Flexible(
+                            child: Text(
+                              '+5 Protect Points',
+                              style: TextStyle(color: Colors.deepPurpleAccent),
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height/65,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              print('Get Tested');
+                            },
+                            child: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              decoration: BoxDecoration(
+                                color: Colors.deepPurple,
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Flexible(
+                            child: Text(
+                              'Share to a friend',
+                              maxLines: 2,
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width/10,
+                          ),
+                          Flexible(
+                            child: Text(
+                              '+5 Protect Points',
+                              style: TextStyle(color: Colors.deepPurpleAccent),
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height/65,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              print('Get Tested');
+                            },
+                            child: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              decoration: BoxDecoration(
+                                color: Colors.deepPurple,
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                              child: Icon(Icons.title, color: Colors.white, size: 30,),
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Flexible(
+                            child: Text(
+                              'Obtain Protect Title',
+                              maxLines: 2,
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width/10,
+                          ),
+                          Flexible(
+                            child: Text(
+                              '+ Protect Title',
+                              style: TextStyle(color: Colors.deepPurpleAccent),
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
+
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/15,
+                  ),
+
+
                 ],
               ),
             ),
