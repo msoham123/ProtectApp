@@ -166,25 +166,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height/20,
                   ),
-                  RaisedButton(
-                    child: Text("Bluetooth"),
-                    color: Colors.blue,
-                    onPressed: (){
-//                      var device = FlutterBluetooth(isOnline: false);
-//                      device.turnDeviceOn();
-//                      data = device.getFeed();
-//                      setState(() {
-//                        data = data;
-//                      });
-//                      device.scanForNearbyDevices();
-//                      data = device.getFeed();
-//                      setState(() {
-//                        data = data;
-//                      });
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
-                    },
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height / 25),
+//                  RaisedButton(
+//                    child: Text("Bluetooth"),
+//                    color: Colors.blue,
+//                    onPressed: (){
+////                      var device = FlutterBluetooth(isOnline: false);
+////                      device.turnDeviceOn();
+////                      data = device.getFeed();
+////                      setState(() {
+////                        data = data;
+////                      });
+////                      device.scanForNearbyDevices();
+////                      data = device.getFeed();
+////                      setState(() {
+////                        data = data;
+////                      });
+//                      Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
+//                    },
+//                  ),
+//                  SizedBox(height: MediaQuery.of(context).size.height / 25),
 //                  Text("Bluetooth Data: $data"),
                 ],
               ),
