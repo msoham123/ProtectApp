@@ -33,6 +33,8 @@ dependencies:
   http:
   intro_slider:
   flutter_svg:
+  permission_handler:
+  agora_rtc_engine:
 
 dev_dependencies:
   flutter_test:
