@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:protect/animations/fadeAnimation.dart';
 import 'package:protect/animations/customButtonAnimation.dart';
-import 'package:protect/screens/loginScreen.dart';
-import 'package:protect/screens/signUpScreen.dart';
+import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/login+signupScreens/loginScreen.dart';
+import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/login+signupScreens/signUpScreen.dart';
 
 
 class FirstScreen extends StatefulWidget {
