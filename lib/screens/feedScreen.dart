@@ -2,16 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:protect/components/articleCard.dart';
 import 'package:protect/data/webScraper.dart' as scraper;
-import 'firstScreen.dart';
 import 'package:http/http.dart';
 
 
-class feedScreen extends StatefulWidget {
+class FeedScreen extends StatefulWidget {
   @override
-  _feedScreenState createState() => _feedScreenState();
+  _FeedScreenState createState() => _FeedScreenState();
 }
 
-class _feedScreenState extends State<feedScreen>{
+class _FeedScreenState extends State<FeedScreen>{
   final TextEditingController _searchControl = new TextEditingController();
   String response = "This is where the response will be stored";
 
