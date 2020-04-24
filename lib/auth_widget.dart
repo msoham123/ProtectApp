@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protect/navScreen.dart';
-import 'screens/login+signupScreens/loginScreen.dart';
+import 'package:protect/screens/login+signupScreens/firstScreen.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:provider/provider.dart';
 
@@ -23,13 +23,13 @@ class _AuthWidgetState extends State<AuthWidget> {
     return StreamBuilder<User>(
       stream: authService.onAuthStateChanged,
       builder: (context, snapshot) {
-        if (snapshot.data != null) {
+        if (snapshot.connectionState == ConnectionState.active) {
           var user = snapshot.data;
 
           if (user != null) {
             return NavScreen();
           } else {
-            return LoginScreen();
+            return FirstScreen();
           }
         } else {
           return Scaffold(body: Center(child: CircularProgressIndicator()));
