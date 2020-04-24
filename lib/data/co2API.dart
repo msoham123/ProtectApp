@@ -9,17 +9,12 @@ class Climate {
   int HTTP_SUCCESS_CODE = 200;
 
   Future<CO2Model> fetchCarbonEmissionData() async {
-<<<<<<< HEAD
     var response = await http
         .get('${_baseURL}/${_sortQuery}/?callback=callback');
-=======
-    var response = await http.get('${_baseURL}/${_sortQuery}/?callback=callback');
->>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
 //    RegExp exp = new RegExp(r'callback\((.*).*\)');
 //    var match = exp.firstMatch(json.encode(response.body));
 //    print("match = " + match.group(1));
 //    print("encode = " + json.encode(response.body).trim());
-<<<<<<< HEAD
     // 19 20 21
     // 36 37 38
     // 54 55 56
@@ -35,14 +30,6 @@ class Climate {
           oneYearAgo: oneYearAgo,
           tenTearsAgo: tenYearsAgo
         );
-=======
-    try {
-      if(response.statusCode == HTTP_SUCCESS_CODE) {
-//        var jsonData = jsonDecode(response.body);
-//        var data = jsonData['callback'];
-        var jsonData = json.decode(json.encode(response.body).trim());
-        CO2Model instance = CO2Model.fromJSON(jsonData);
->>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
         return instance;
       } else {
         print('failed');
