@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:protect/components/articleCard.dart';
 import 'package:protect/data/webScraper.dart' as scraper;
 import 'package:http/http.dart';
+import 'package:protect/screens/create_post.dart';
 
 class FeedScreen extends StatefulWidget {
   @override
@@ -46,6 +47,13 @@ class _FeedScreenState extends State<FeedScreen> {
 //            SizedBox(height: MediaQuery.of(context).size.height/300),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => CreatePostScreen()));
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

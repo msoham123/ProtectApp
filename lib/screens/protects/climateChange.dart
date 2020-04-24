@@ -114,7 +114,7 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Climate Change Impact\n",
+                              text: "Climate Change Impact (ppm)\n",
                               style: kTitleTextstyle,
                             ),
                             TextSpan(
@@ -127,13 +127,6 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                         ),
                       ),
                       Spacer(),
-//                      Text(
-//                        "See details",
-//                        style: TextStyle(
-//                          color: kPrimaryColor,
-//                          fontWeight: FontWeight.w600,
-//                        ),
-//                      ),
                     ],
                   ),
                   SizedBox(height: 20),

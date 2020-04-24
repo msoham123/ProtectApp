@@ -12,6 +12,7 @@ FirebaseUser loggedInUser;
 final _firestore = Firestore.instance;
 final _auth = FirebaseAuth.instance;
 String loggedInUserName = '';
+bool _loading = true;
 
 class MessageScreen extends StatefulWidget {
   @override
@@ -40,6 +41,9 @@ class _MessageScreenState extends State<MessageScreen> {
         loggedInUser = user;
         DocumentSnapshot ds = await _firestoreService.getUserDocumentSnapshot(loggedInUser.uid);
         loggedInUserName = ds.data['full_name'];
+        setState(() {
+          _loading = false;
+        });
       }
     } catch (e) {
       print(e);
@@ -91,7 +95,7 @@ class _MessageScreenState extends State<MessageScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            MessagesStream(),
+            _loading ? Center(child: CircularProgressIndicator()) : MessagesStream(),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
