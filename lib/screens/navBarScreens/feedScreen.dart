@@ -38,29 +38,29 @@ class _FeedScreenState extends State<FeedScreen> {
         children: <Widget>[
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
-                stream: _firestore
-                    .collection('posts')
-                    .orderBy('timestamp', descending: true)
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData)
-                    return Center(child: CircularProgressIndicator());
-                  return ListView.builder(
-                      itemExtent: MediaQuery.of(context).size.height/1.7,
-                      itemCount: snapshot.data.documents.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: <Widget>[
-                            SizedBox(height: MediaQuery.of(context).size.height/100),
-                            _buildPost(
-                                context, snapshot.data.documents[index]),
-                          ],
-                        );
-                      });
-                }
+              stream: _firestore
+                  .collection('posts')
+                  .orderBy('timestamp', descending: true)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData)
+                  return Center(child: CircularProgressIndicator());
+                return ListView.builder(
+                  itemExtent: MediaQuery.of(context).size.height / 1.9,
+                  itemCount: snapshot.data.documents.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: <Widget>[
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height / 100),
+                        _buildPost(context, snapshot.data.documents[index]),
+                      ],
+                    );
+                  },
+                );
+              },
+            ),
           ),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height/30),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -76,18 +76,19 @@ class _FeedScreenState extends State<FeedScreen> {
       ),
     );
   }
+
   Widget _buildPost(BuildContext context, DocumentSnapshot document) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height/1.75,
+//      height: MediaQuery.of(context).size.height/1.75,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(25.0),
+        borderRadius: BorderRadius.circular(5.0),
         boxShadow: [
           BoxShadow(
             color: Colors.grey,
             offset: Offset(0.0, 1.0), //(x,y)
-            blurRadius: 6.0,
+            blurRadius: 2.0,
           ),
         ],
       ),
@@ -126,40 +127,41 @@ class _FeedScreenState extends State<FeedScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: Text(
-                    "${document['date']}".replaceAll("  ", "at").replaceAll(" ", " - ").replaceAll("at", " at ").replaceAll("- P", "P")),
+                subtitle: Text("${document['date']}"
+                    .replaceAll("  ", "at")
+                    .replaceAll(" ", " - ")
+                    .replaceAll("at", " at ")
+                    .replaceAll("- P", "P")),
                 trailing: IconButton(
                   icon: Icon(Icons.filter_frames),
                   color: Colors.black,
                   onPressed: () => print('More'),
                 ),
               ),
-
               Container(
                 margin: EdgeInsets.all(10.0),
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height / 3.5,
                 decoration: BoxDecoration(
-//                    color: Colors.black12,
                   borderRadius: BorderRadius.circular(25.0),
-                  boxShadow: [
-//                      BoxShadow(
-//                        color: Colors.black45,
-//                        offset: Offset(0, 5),
-//                        blurRadius: 1.0,
-//                      ),
-                  ],
+                  boxShadow: [],
                 ),
                 child: Image(
                   image: NetworkImage('${document['imageURL']}'),
                   fit: BoxFit.contain,
                 ),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("${document['hashtags']}".replaceAll(']''', '').replaceAll('[', ""), style: TextStyle(color: Colors.blue,),)
+                  Text(
+                    "${document['hashtags']}"
+                        .replaceAll(']' '', '')
+                        .replaceAll('[', ""),
+                    style: TextStyle(
+                      color: Colors.blue,
+                    ),
+                  )
                 ],
               ),
               Wrap(
@@ -167,11 +169,19 @@ class _FeedScreenState extends State<FeedScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Center(child: Text("${document['description']}".replaceAll(']''', '').replaceAll('[', ""), maxLines: 10,style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),)),
+                    child: Center(
+                        child: Text(
+                      "${document['description']}"
+                          .replaceAll(']' '', '')
+                          .replaceAll('[', ""),
+                      maxLines: 4,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.w500),
+                    )),
                   ),
                 ],
               ),
-
+              SizedBox(height: 20.0)
             ],
           ),
         ],
@@ -179,59 +189,3 @@ class _FeedScreenState extends State<FeedScreen> {
     );
   }
 }
-
-//                  Row(
-//                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                    children: <Widget>[
-//                      FlatButton(
-//                        color: Colors.green,
-//                        child: Text("Scrape Web", style: TextStyle(color: Colors.white),),
-//                        onPressed: () async {
-//                          response = await scraper.initiate(Client());
-//                          setState(() {
-//                            response = response;
-//                          });
-//                        },
-//                      ),
-//                      FlatButton(
-//                        color: Colors.blue,
-//                        child: Text("Clean Output", style: TextStyle(color: Colors.white),),
-//                        onPressed: () {
-//                          setState(() {
-//                            response = "This is where the response will be stored";
-//                          });
-//                        },
-//                      ),
-//                    ],
-//                  ),
-/*
-SizedBox(
-                    height: MediaQuery.of(context).size.height/20,
-                  ),
-
-                  Center(child: Text(response, style: TextStyle(color: Colors.black),)),
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height/20,
-                  ),
-
-                  ArticleCard(
-                    articleTitle: "Dobervich drinks too much coffee!",
-                    articleDate: "March 11, 2020",
-                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
-                    articleInformation: "AP CS students cry in agony as FRQ problems ravage the land.",
-                    articleProtect: "Dobervich",
-                  ),
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height/20,
-                  ),
-
-                  ArticleCard(
-                    articleTitle: "Aryan burns his Calc HW!",
-                    articleDate: "March 11, 2020",
-                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
-                    articleInformation: "AP BC students cry in agony as FRQ problems ravage the land.",
-                    articleProtect: "Calc BC",
-                  ),
- */
