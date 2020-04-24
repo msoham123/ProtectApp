@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protect/auth_widget.dart';
+import 'package:protect/services/firebase_storage_service.dart';
 import 'package:protect/services/image_picker_service.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         Provider<ImagePickerService>(
             create: (_) => ImagePickerService()
+        ),
+        Provider<FirebaseStorageService>(
+            create: (_) => FirebaseStorageService()
         )
       ],
       child: MaterialApp(
