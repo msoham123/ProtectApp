@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:protect/screens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
+import 'package:protect/services/firestore_service.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -9,6 +12,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final _auth = FirebaseAuth.instance;
+  String fullName = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    populateCurrentUser();
+  }
+
   Future<void> _signOut(BuildContext context) async {
     try {
       final _auth = Provider.of<FirebaseAuthService>(context, listen: false);
@@ -20,18 +33,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  Future<void> populateCurrentUser() async {
+    final database = Provider.of<FirestoreService>(context, listen: false);
+    final user = await _auth.currentUser();
+    String uid = user.uid;
+    DocumentSnapshot snapshot = await database.getUserDocumentSnapshot(uid);
+    fullName = snapshot.data['full_name'];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Center(
             child: Padding(
-              padding: const EdgeInsets.only(left: 58.0),
-              child: Text(
-          "My Profile",
-          style: TextStyle(fontWeight: FontWeight.w700),
-        ),
-            )),
+          padding: const EdgeInsets.only(left: 58.0),
+          child: Text(
+            "My Profile",
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
+        )),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: false,
@@ -48,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
         child: Column(
@@ -56,15 +77,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: ListView(
                 children: <Widget>[
-
                   SizedBox(height: 10.0),
-
-
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 25),
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height/4,
+                      height: MediaQuery.of(context).size.height / 4,
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.deepPurple,
@@ -94,29 +113,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage('assets/images/profile.png'),
-                              fit: BoxFit.contain
-                            ),
+                                image: AssetImage('assets/images/profile.png'),
+                                fit: BoxFit.contain),
                           ),
                         ),
                       ),
                     ),
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Flexible(
-                        child: Text(
-                          'Soham Manoli',
-                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: Colors.white),
+                        child: FutureBuilder(
+                          future: populateCurrentUser(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return Text("${fullName}",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 30.0));
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          },
                         ),
                       ),
                     ],
                   ),
-
-
-
                 ],
               ),
             ),
