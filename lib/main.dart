@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:protect/auth_widget.dart';
-import 'package:protect/screens/login+signupScreens/IntroScreen.dart';
-import 'package:protect/screens/login+signupScreens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:protect/services/firestore_service.dart';

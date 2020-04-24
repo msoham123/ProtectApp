@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:protect/constant.dart';
 import 'package:protect/components/my_header.dart';
 import 'package:protect/components/counter.dart';
+import 'package:protect/data/co2API.dart';
+import 'package:protect/models/co2_model.dart';
 import 'package:protect/screens/newsScreen.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 
@@ -15,6 +17,23 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
   TextEditingController paymentController = new TextEditingController();
   double _paymentAmount = 0.0;
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
+  bool _loading = true;
+  CO2Model carbonEmissionData;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchCarbonEmissionData();
+  }
+
+  void fetchCarbonEmissionData() async {
+    Climate climateAPI = new Climate();
+    carbonEmissionData = await climateAPI.fetchCarbonEmissionData();
+    setState(() {
+      _loading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,23 +150,23 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                         ),
                       ],
                     ),
-                    child: Row(
+                    child: _loading ? CircularProgressIndicator() : Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Counter(
                           color: kInfectedColor,
-                          number: 1046,
-                          title: "Kilotons of \nIce Melted\n",
+                          number: carbonEmissionData.tenTearsAgo,
+                          title: "10YR AGO",
                         ),
                         Counter(
                           color: kDeathColor,
-                          number: 87,
-                          title: "Deaths\n\n",
+                          number: carbonEmissionData.oneYearAgo,
+                          title: "1YR AGO",
                         ),
                         Counter(
                           color: kDeathColor,
-                          number: 46,
-                          title: "     Rise in \nTemperature\n   (Celsius)",
+                          number: carbonEmissionData.current,
+                          title: "TODAY",
                         ),
                       ],
                     ),
@@ -162,13 +181,6 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                           style: kTitleTextstyle,
                         ),
                       ),
-//                      Text(
-//                        "See details",
-//                        style: TextStyle(
-//                          color: kPrimaryColor,
-//                          fontWeight: FontWeight.w600,
-//                        ),
-//                      ),
                     ],
                   ),
                   Container(
