@@ -12,7 +12,7 @@ import 'package:flutter/services.dart' as service;
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
- 
+  
   static int currentIndex = 0;
   static String email = '';
   static String password = '';
