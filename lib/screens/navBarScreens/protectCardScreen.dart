@@ -44,7 +44,8 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                     SizedBox(width: MediaQuery.of(context).size.width / 15),
                     Text(
                       "Protect Information",
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                     )
                   ],
                 ),
@@ -95,42 +96,40 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                         protectInformation: 'Description...',
                       ),
                       SizedBox(
-                       width: MediaQuery.of(context).size.width/15,
+                        width: MediaQuery.of(context).size.width / 15,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(width: MediaQuery.of(context).size.width / 15),
-                Text(
-                  "Leaderboard",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-                )
-              ],
-            ),
-
-            Container(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: firestore
-                    .collection('users')
-                    .orderBy('protect_points', descending: true)
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if(!snapshot.hasData){
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  return leaderboardBuilder(context,snapshot);
-                },
-              ),
-            ),
-
-            SizedBox(
-              height: MediaQuery.of(context).size.height/25,
-            ),
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(width: MediaQuery.of(context).size.width / 15),
+                    Text(
+                      "Leaderboard",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                    )
+                  ],
+                ),
+                Container(
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: firestore
+                        .collection('users')
+                        .orderBy('protect_points', descending: true)
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      return leaderboardBuilder(context, snapshot);
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 25,
+                ),
               ],
             ),
           ),
@@ -139,10 +138,11 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
     );
   }
 
-  Widget leaderboardBuilder(BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+  Widget leaderboardBuilder(
+      BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
     List<Widget> myList = [];
-    for(int i = 0; i<snapshot.data.documents.length; i++){
-      myList.add(SizedBox(height: MediaQuery.of(context).size.height/50));
+    for (int i = 0; i < snapshot.data.documents.length; i++) {
+      myList.add(SizedBox(height: MediaQuery.of(context).size.height / 50));
       myList.add(_buildUserCard(context, snapshot.data.documents[i]));
     }
     return Column(
@@ -153,11 +153,48 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
   Widget _buildUserCard(BuildContext context, DocumentSnapshot document) {
     return Card(
       child: Container(
-        height: MediaQuery.of(context).size.height/10,
+        height: MediaQuery.of(context).size.height / 10,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('${document['full_name']} – ${document['protect_points']} protect points'),
+            Container(
+              width: 50.0,
+              height: 50.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black45,
+                    offset: Offset(0, 2),
+                    blurRadius: 6.0,
+                  ),
+                ],
+              ),
+              child: CircleAvatar(
+                child: ClipOval(
+                  child: Image(
+                    height: 50.0,
+                    width: 50.0,
+                    image: AssetImage("assets/images/profile.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    '${document['full_name']}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text('${document['protect_points']} protect points')
+                ],
+              ),
+            ),
           ],
         ),
       ),
