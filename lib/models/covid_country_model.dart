@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class CountryModel {
   String countryName;
   String flagImg;
