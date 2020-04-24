@@ -15,61 +15,69 @@ class protectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30.0),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 6.0,
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 5.0,
-          )
-        ],
-      ),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => screen,
-            ),
-          );
-        },
-        child: Container(
-          height: MediaQuery.of(context).size.height / 2.9,
-          width: MediaQuery.of(context).size.width / 2.1,
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15.0),
-                    topRight: Radius.circular(15.0),
-                  ),
-                  child: Image.asset(
-                    imageFilePath,
-                    height: 150,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 10,
-                  ),
-                  Text(
-                    protectTitle,
-                    style: TextStyle(fontWeight: FontWeight.w600),
-                  )
-                ],
+    return Column(
+      children: <Widget>[
+        Container(
+//      height: MediaQuery.of(context).size.height/5,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30.0),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 3.0,
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 5.0,
               )
             ],
           ),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => screen,
+                ),
+              );
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height / 2.9,
+              width: MediaQuery.of(context).size.width / 2.1,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0),
+                      ),
+                      child: Image.asset(
+                        imageFilePath,
+                        height: 150,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 10,
+                      ),
+                      Text(
+                        protectTitle,
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height/9999,
+        ),
+      ],
     );
   }
 }
