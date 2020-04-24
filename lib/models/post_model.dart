@@ -4,16 +4,18 @@ class PostModel {
   String sender;
   List<String> hashtags;
   String description;
-  String timestamp;
+  String date;
+  FieldValue timestamp;
   String imageURL;
 
-  PostModel({this.sender, this.hashtags, this.description, this.timestamp, this.imageURL});
+  PostModel({this.sender, this.hashtags, this.description, this.date, this.timestamp, this.imageURL});
 
   Map<String, dynamic> toJSON() => <String, dynamic>{
     'sender': sender,
     'hashtags': hashtags,
     'description': description,
+    'date': date,
     'timestamp': timestamp,
-    'imageURL': imageURL
+    'imageURL': imageURL,
   };
 }

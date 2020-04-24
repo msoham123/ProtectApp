@@ -251,13 +251,14 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                                       description: description,
                                       hashtags: hashtagList,
                                       imageURL: imagePath,
-                                      timestamp: "${DateTime
+                                      date: "${DateTime
                                           .now()
                                           .year}-${DateTime
                                           .now()
                                           .month}-${DateTime
                                           .now()
-                                          .day}"
+                                          .day}",
+                                    timestamp: FieldValue.serverTimestamp()
                                   );
                                   createNewPost(context, instance);
                                   resetForm(context);
