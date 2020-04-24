@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:protect/main.dart';
-import 'package:protect/models/User.dart';
+import 'package:protect/models/ProtectUser.dart';
 import 'package:protect/screens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
