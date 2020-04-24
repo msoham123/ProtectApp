@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:protect/auth_widget.dart';
-import 'package:protect/screens/addProtectScreen.dart';
 import 'package:protect/screens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:protect/services/firestore_service.dart';
 import 'package:flutter/services.dart' as service;
-import 'package:protect/screens/IntroScreen.dart';
 
 //Device Preview
 //void main() => runApp(DevicePreview(builder: (context) => MyApp()));
@@ -20,7 +17,6 @@ class MyApp extends StatelessWidget {
   static String password = '';
   static List<String> protectList = [];
   static List<String> allProtectList = ["Covid-19","Amazon Rainforest","The Great Barrier Reef","Empty"];
-
 
   @override
   Widget build(BuildContext context) {
