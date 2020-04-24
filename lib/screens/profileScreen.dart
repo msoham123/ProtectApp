@@ -49,14 +49,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-            child: Padding(
-          padding: const EdgeInsets.only(left: 58.0),
-          child: Text(
-            "My Profile",
-            style: TextStyle(fontWeight: FontWeight.w700),
-          ),
-        )),
+        title: Text(
+          "My Profile",
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: false,
@@ -136,14 +132,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               return Column(
                                 children: <Widget>[
                                   Text(
-                                    "${fullName}",
+                                    "$fullName",
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 30.0,
                                     ),
                                   ),
                                   Text(
-                                    "${protectPoints} protect points",
+                                    "$protectPoints protect points",
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 30.0,

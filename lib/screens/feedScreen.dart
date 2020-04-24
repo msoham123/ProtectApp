@@ -19,7 +19,8 @@ class _FeedScreenState extends State<FeedScreen>{
     return Scaffold(
         appBar: AppBar(
         title: Center(child: Text("My Feed", style: TextStyle(fontWeight: FontWeight.w700),)),
-        backgroundColor: Colors.deepPurple,
+          centerTitle: true,
+          backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: false,
         actions: <Widget>[],
       ),
