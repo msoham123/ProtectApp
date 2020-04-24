@@ -131,9 +131,9 @@ class _NavScreenState extends State<NavScreen> {
         color: Colors.deepPurple,
         buttonBackgroundColor: Colors.deepPurple,
         items: <Widget>[
+          Icon(Icons.live_help, size: 30, color: Colors.white,),
           Icon(Icons.dashboard, size: 30, color: Colors.white,),
           Icon(Icons.forum, size: 30, color: Colors.white,),
-          Icon(Icons.live_help, size: 30, color: Colors.white,),
           Icon(Icons.person, size: 30, color: Colors.white,),
         ],
         onTap: (index) {
