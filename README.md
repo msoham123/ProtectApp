@@ -1,6 +1,6 @@
 # Protect
 
-Submission for HackSwiftly
+Hackathon Submission
 
 ## Getting Started
 
