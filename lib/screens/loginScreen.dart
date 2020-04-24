@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:protect/animations/buttonLoginAnimation.dart';
+import 'package:protect/animations/fadeAnimation.dart';
 import 'package:protect/components/customTextfield.dart';
-import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/animations/dashAnimation.dart';
+import 'package:protect/animations/dashAnimation.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:protect/navScreen.dart';
 
@@ -70,20 +71,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Center(
-                          child: Text("Welcome back",style: TextStyle(
+                          child: FadeAnimation(0.4,Text("Welcome back",style: TextStyle(
                               color: Color(0xFFF032f42),
                               fontSize: 30,
                               fontWeight: FontWeight.bold
                           )),
-                        ),
+                        ),),
                         Center(
-                          child: Text("Sign to continue",style: TextStyle(
+                          child: FadeAnimation(0.4,Text("Sign to continue",style: TextStyle(
                               color: Colors.grey,
                               fontSize: 25
                           )),
-                        ),
+                        ),),
                         SizedBox(height: 40),
-                        TextField(
+                        FadeAnimation(0.4,TextField(
                           onChanged: (value) {
                           },
                           style: TextStyle(
@@ -107,9 +108,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Color(0xFFF032f41),
                             ),
                           ),
-                        ),
+                        ),),
                         SizedBox(height: 10),
-                        TextField(
+                        FadeAnimation(0.4,TextField(
                           onChanged: (value) {
 
                           },
@@ -138,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Color(0xFFF032f41),
                             ),
                           ),
-                        ),
+                        )),
                         SizedBox(height: 40),
                         Center(
 //                          child: MaterialButton(
@@ -176,14 +177,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Container(
                               height: MediaQuery.of(context).size.height/14,
                               width: MediaQuery.of(context).size.width/2.8,
-                              child: FlatButton(
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => NavScreen()));
-                                },
-                                color: Colors.deepPurpleAccent,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Text("Sign In", style: TextStyle(color: Colors.white),),
+                              child: FadeAnimation(0.4,FlatButton(
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => NavScreen()));
+                                  },
+                                  color: Colors.deepPurpleAccent,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Text("Sign In", style: TextStyle(color: Colors.white),),
+                                ),
                               ),
                             )
 
