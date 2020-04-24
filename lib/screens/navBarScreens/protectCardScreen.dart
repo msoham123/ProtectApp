@@ -5,6 +5,7 @@ import 'package:protect/screens/protects/amazonRainforest.dart';
 import 'package:protect/screens/protects/coronavirus.dart';
 import 'package:protect/screens/protects/climateChange.dart';
 import 'package:protect/screens/protects/greatBarrierReef.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProtectCardScreen extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class ProtectCardScreen extends StatefulWidget {
 }
 
 class _ProtectCardScreenState extends State<ProtectCardScreen> {
+  final firestore = Firestore.instance;
   bool selected = false;
 
   @override
@@ -28,10 +30,11 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
         actions: <Widget>[],
       ),
       backgroundColor: Colors.white,
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: ListView(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            ListView(
               shrinkWrap: true,
               children: <Widget>[
                 SizedBox(height: MediaQuery.of(context).size.height / 20),
@@ -41,8 +44,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                     SizedBox(width: MediaQuery.of(context).size.width / 15),
                     Text(
                       "Protect Information : ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                     )
                   ],
                 ),
@@ -100,7 +102,61 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                 ),
               ],
             ),
-          ),
+            SizedBox(
+              height: 40.0,
+            ),
+            Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(left: 30.0),
+                      child: Text(
+                        "Leaderboard : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                            color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 500.0,
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: firestore
+                        .collection('users')
+                        .orderBy('protect_points', descending: true)
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData)
+                        return Center(child: CircularProgressIndicator());
+                      return ListView.builder(
+                        itemExtent: 80.0,
+                        itemCount: snapshot.data.documents.length,
+                        itemBuilder: (context, index) => _buildUserCard(
+                          context,
+                          snapshot.data.documents[index],
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserCard(BuildContext context, DocumentSnapshot document) {
+    return Card(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text('${document['full_name']} – ${document['protect_points']} protect points'),
         ],
       ),
     );
