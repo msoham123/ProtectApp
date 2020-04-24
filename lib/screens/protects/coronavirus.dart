@@ -9,6 +9,7 @@ import 'package:protect/screens/newsScreen.dart';
 import 'package:protect/screens/protects/corona_info_screen.dart';
 import 'package:protect/models/covid_country_model.dart';
 import 'package:protect/screens/protects/covid_map.dart';
+import 'package:flutter_braintree/flutter_braintree.dart';
 
 class CoronavirusScreen extends StatefulWidget {
   @override
@@ -19,9 +20,9 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
   String selectedCountry = 'USA';
   CountryModel selectedCountryData;
   bool _isloading = true;
-  PieChartData pieChartData = PieChartData(
-
-  );
+  PieChartData pieChartData = PieChartData();
+  TextEditingController paymentController = new TextEditingController();
+  static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
 
   @override
   void initState() {
@@ -36,6 +37,26 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
     setState(() {
       _isloading = false;
     });
+  }
+
+  void showNonce(BraintreePaymentMethodNonce nonce) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text('Payment method nonce:'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text('Nonce: ${nonce.nonce}'),
+            SizedBox(height: 16),
+            Text('Type label: ${nonce.typeLabel}'),
+            SizedBox(height: 16),
+            Text('Description: ${nonce.description}'),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -58,7 +79,6 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
               textTop: "All you need",
               textBottom: "is to stay at\nhome.",
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -68,8 +88,8 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         MaterialPageRoute(builder: (context) => InfoScreen()));
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width/2.5,
-                    height: MediaQuery.of(context).size.height/20,
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    height: MediaQuery.of(context).size.height / 20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -93,14 +113,16 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                NewsScreen(searchQuery: "coronavirus")));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NewsScreen(searchQuery: "coronavirus"),
+                      ),
+                    );
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width/2.5,
-                    height: MediaQuery.of(context).size.height/20,
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    height: MediaQuery.of(context).size.height / 20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -130,14 +152,15 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                COVIDMap()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => COVIDMap(),
+                      ),
+                    );
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width/2.5,
-                    height: MediaQuery.of(context).size.height/20,
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    height: MediaQuery.of(context).size.height / 20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -160,9 +183,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 ),
               ],
             ),
-
             SizedBox(height: 20.0),
-
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -185,8 +206,17 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       underline: SizedBox(),
                       icon: SvgPicture.asset("./assets/icons/dropdown.svg"),
                       value: selectedCountry,
-                      items: ['USA', 'India', 'China', 'Canada', 'Russia', 'France', 'Spain', 'Italy', 'Israel']
-                          .map<DropdownMenuItem<String>>((String value) {
+                      items: [
+                        'USA',
+                        'India',
+                        'China',
+                        'Canada',
+                        'Russia',
+                        'France',
+                        'Spain',
+                        'Italy',
+                        'Israel'
+                      ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -203,9 +233,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 ],
               ),
             ),
-
-            SizedBox(height: MediaQuery.of(context).size.height/20),
-
+            SizedBox(height: MediaQuery.of(context).size.height / 20),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -220,7 +248,8 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                               style: kTitleTextstyle,
                             ),
                             TextSpan(
-                              text: "Newest update: ${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}",
+                              text:
+                                  "Newest update: ${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}",
                               style: TextStyle(
                                 color: kTextLightColor,
                               ),
@@ -238,7 +267,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
 //                      ),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height/20),
+                  SizedBox(height: MediaQuery.of(context).size.height / 20),
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
@@ -255,9 +284,10 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                     child: _isloading
                         ? CircularProgressIndicator()
                         : Column(
-                          children: <Widget>[
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Counter(
                                     color: kInfectedColor,
@@ -276,31 +306,32 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                                   ),
                                 ],
                               ),
-                            SizedBox(height: 15.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Counter(
-                                  color: kInfectedColor,
-                                  number: selectedCountryData.todayCases,
-                                  title: "Today Cases",
-                                ),
-                                Counter(
-                                  color: kDeathColor,
-                                  number: selectedCountryData.todayDeaths,
-                                  title: "Today Deaths",
-                                ),
-                                Counter(
-                                  color: kCriticalcolor,
-                                  number: selectedCountryData.critical,
-                                  title: "Critical",
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              SizedBox(height: 15.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Counter(
+                                    color: kInfectedColor,
+                                    number: selectedCountryData.todayCases,
+                                    title: "Today Cases",
+                                  ),
+                                  Counter(
+                                    color: kDeathColor,
+                                    number: selectedCountryData.todayDeaths,
+                                    title: "Today Deaths",
+                                  ),
+                                  Counter(
+                                    color: kCriticalcolor,
+                                    number: selectedCountryData.critical,
+                                    title: "Critical",
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height/20),
+                  SizedBox(height: MediaQuery.of(context).size.height / 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -317,38 +348,59 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
 //                      ),
                     ],
                   ),
-
-                  SizedBox(height: MediaQuery.of(context).size.height/35),
-
+                  SizedBox(height: 10.0),
                   Container(
-                    child: (_isloading) ? CircularProgressIndicator() : PieChart(
-                      PieChartData(
-                        sectionsSpace: 0,
-                        centerSpaceRadius: 0,
-                        borderData: FlBorderData(
-                          show: false,
-                        ),
-                        sections: [
-                          PieChartSectionData(
-                            radius: 80,
-                            color: Colors.green,
-                            title: "Recovered",
-                            titleStyle: TextStyle(color: Colors.black),
-                            value: selectedCountryData.recovered.roundToDouble(),
+                    child: (_isloading)
+                        ? CircularProgressIndicator()
+                        : PieChart(
+                            PieChartData(
+                              sectionsSpace: 0,
+                              centerSpaceRadius: 0,
+                              borderData: FlBorderData(
+                                show: false,
+                              ),
+                              sections: [
+                                PieChartSectionData(
+                                  radius: 80,
+                                  color: Colors.green,
+                                  title: "Recovered",
+                                  titleStyle: TextStyle(color: Colors.black),
+                                  value: selectedCountryData.recovered
+                                      .roundToDouble(),
+                                ),
+                                PieChartSectionData(
+                                  radius: 80,
+                                  color: Colors.blue,
+                                  titleStyle: TextStyle(color: Colors.black),
+                                  title: "Total Cases",
+                                  value:
+                                      selectedCountryData.totalCases.toDouble(),
+                                ),
+                              ],
+                            ),
                           ),
-                          PieChartSectionData(
-                            radius: 80,
-                            color: Colors.blue,
-                            titleStyle: TextStyle(color: Colors.black),
-                            title: "Total Cases",
-                            value: selectedCountryData.totalCases.toDouble(),
-                          ),
-                        ]
-                      )
-                    ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height / 10,
+                    height: 10.0,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 50.0),
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    child: RaisedButton(
+                      onPressed: () async {
+                        _showDialog(context);
+                      },
+                      color: Colors.white,
+                      textColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.purpleAccent),
+                      ),
+                      child: Text(
+                        'Donate today!',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -356,6 +408,86 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  void _showDialog(BuildContext context) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirmation"),
+          content: Column(
+            children: <Widget>[
+              Text(
+                  "Thank you for doing the noble cause. Your contributions are greatly appreciated."),
+              Form(
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Please enter some text";
+                        }
+                        return null;
+                      },
+                      controller: paymentController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.card_giftcard),
+                        labelText: "Donation amount",
+                        hintText: "ex: 5.00",
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          actions: <Widget>[
+            RaisedButton(
+              child: Text("Cancel 😞"),
+              shape: RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.purpleAccent),
+              ),
+              textColor: Colors.white,
+              color: Colors.purpleAccent,
+              onPressed: () async {
+                Navigator.of(context).pop();
+              },
+            ),
+            RaisedButton(
+              child: Text("Confirm payment"),
+              shape: RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.purpleAccent),
+              ),
+              textColor: Colors.white,
+              color: Colors.purpleAccent,
+              onPressed: () async {
+                Navigator.of(context).pop();
+                var request = BraintreeDropInRequest(
+                  tokenizationKey: tokenizationKey,
+                  collectDeviceData: true,
+                  googlePaymentRequest: BraintreeGooglePaymentRequest(
+                    totalPrice: '4.20',
+                    currencyCode: 'USD',
+                    billingAddressRequired: false,
+                  ),
+                );
+                BraintreeDropInResult result =
+                    await BraintreeDropIn.start(request);
+                if (result != null) {
+                  showNonce(result.paymentMethodNonce);
+                }
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
