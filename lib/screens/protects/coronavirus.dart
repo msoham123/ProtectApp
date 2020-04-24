@@ -22,7 +22,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF11249F),
+        backgroundColor: Colors.deepPurpleAccent,
         automaticallyImplyLeading: true,
       ),
       body: SingleChildScrollView(
@@ -154,13 +154,13 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ),
                       ),
                       Spacer(),
-                      Text(
-                        "See details",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+//                      Text(
+//                        "See details",
+//                        style: TextStyle(
+//                          color: kPrimaryColor,
+//                          fontWeight: FontWeight.w600,
+//                        ),
+//                      ),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -206,13 +206,13 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         "Spread of Virus",
                         style: kTitleTextstyle,
                       ),
-                      Text(
-                        "See details",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+//                      Text(
+//                        "See details",
+//                        style: TextStyle(
+//                          color: kPrimaryColor,
+//                          fontWeight: FontWeight.w600,
+//                        ),
+//                      ),
                     ],
                   ),
                   Container(
@@ -235,6 +235,10 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       "assets/images/map.png",
                       fit: BoxFit.contain,
                     ),
+                  ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/10,
                   ),
                 ],
               ),

@@ -13,7 +13,7 @@ class InfoScreen extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF11249F),
+        backgroundColor: Colors.deepPurpleAccent,
         automaticallyImplyLeading: true,
       ),
       body: SingleChildScrollView(
