@@ -61,6 +61,7 @@ class _NewsScreenState extends State<NewsScreen> {
                         title: newsList[index].title ?? "",
                         desc: newsList[index].description ?? "",
                         content: newsList[index].content ?? "",
+                        source: newsList[index].source ?? "",
                         posturl: newsList[index].url ?? "",
                       );
                     },
