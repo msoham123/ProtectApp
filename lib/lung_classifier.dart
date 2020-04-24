@@ -117,7 +117,7 @@ class _LungClassifierState extends State<LungClassifier> {
                                 ),
                               ),
                               child: Text(
-                                '$diagnoses',
+                                '${getText(diagnoses)}',
                                 style: TextStyle(
                                   fontSize: 25.0,
                                   color: Colors.white,
@@ -145,6 +145,11 @@ class _LungClassifierState extends State<LungClassifier> {
         child: Icon(Icons.image),
       ),
     );
+  }
+
+  String getText(String s) {
+    if(s == 'normal') return 'no symptoms of';
+    else return s;
   }
 
   pickImage() async {

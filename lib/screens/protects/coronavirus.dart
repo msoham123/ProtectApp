@@ -14,6 +14,8 @@ import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:share/share.dart';
 import 'package:protect/screens/bluetoothScreen.dart';
 
+import '../map_screen.dart';
+
 class CoronavirusScreen extends StatefulWidget {
   @override
   _CoronavirusScreenState createState() => _CoronavirusScreenState();
@@ -446,7 +448,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                           GestureDetector(
                             onTap: () {
                               print('Check for People Around You');
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen()));
                             },  
                             child: Container(
                               height: 50.0,

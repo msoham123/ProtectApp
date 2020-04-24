@@ -27,49 +27,49 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _signIn(BuildContext context) async {
     print(emailController.text.trim());
     print(passwordController.text.trim());
-      try {
-        final auth = Provider.of<FirebaseAuthService>(context, listen: false);
-        final user = await auth.signInWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim());
+    try {
+      final auth = Provider.of<FirebaseAuthService>(context, listen: false);
+      final user = await auth.signInWithEmailAndPassword(
+          emailController.text.trim(), passwordController.text.trim());
 
-        if (user != null) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => NavScreen(),
-            ),
-          );
-        }
-
-      } catch (e) {
-        print(e);
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Center(child: Text("Error")),
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Flexible(child: Text("Incorrect Password or Username")),
-                ],
-              ),
-              actions: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    FlatButton(
-                      child: Text("Try Again"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            );
-          },
+      if (user != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NavScreen(),
+          ),
         );
       }
+    } catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Center(child: Text("Error")),
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Flexible(child: Text("Incorrect Password or Username")),
+              ],
+            ),
+            actions: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  FlatButton(
+                    child: Text("Try Again"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -128,11 +128,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     Center(
                       child: FadeAnimation(
                         0.4,
-                        Text("Welcome back",
-                            style: TextStyle(
-                                color: Color(0xFFF032f42),
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold)),
+                        Text(
+                          "Welcome back",
+                          style: TextStyle(
+                            color: Color(0xFFF032f42),
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                     Center(
@@ -180,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(
                               color: Color(0xFFF234253),
                               fontWeight: FontWeight.bold),
-                          obscureText: false,
+                          obscureText: true,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                                 borderSide:

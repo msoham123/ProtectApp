@@ -28,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Future<void> createUserWithEmailAndPassword(BuildContext context) async {
     int userAge = int.parse(ageController.text.trim());
-    try {
+//    try {
       final auth = Provider.of<FirebaseAuthService>(context, listen: false);
       final user = await auth.createUserWithEmailAndPassword(
           emailController.text.trim(), passwordController.text.trim());
@@ -43,36 +43,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         );
       }
-    } catch (e) {
-      print(e);
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Center(child: Text("Error")),
-            content: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Flexible(child: Text("Please fill in all boxes")),
-              ],
-            ),
-            actions: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  FlatButton(
-                    child: Text("Try Again"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              ),
-            ],
-          );
-        },
-      );
-    }
+//    } catch (e) {
+//      print(e);
+//      showDialog(
+//        context: context,
+//        builder: (BuildContext context) {
+//          return AlertDialog(
+//            title: Center(child: Text("Error")),
+//            content: Row(
+//              mainAxisAlignment: MainAxisAlignment.center,
+//              children: <Widget>[
+//                Flexible(child: Text("Please fill in all boxes")),
+//              ],
+//            ),
+//            actions: <Widget>[
+//              Row(
+//                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                children: <Widget>[
+//                  FlatButton(
+//                    child: Text("Try Again"),
+//                    onPressed: () {
+//                      Navigator.of(context).pop();
+//                    },
+//                  ),
+//                ],
+//              ),
+//            ],
+//          );
+//        },
+//      );
+//    }
   }
 
   @override

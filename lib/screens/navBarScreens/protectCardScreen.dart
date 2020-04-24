@@ -50,55 +50,27 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                   ],
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 30),
-                Container(
-                  height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.6 : MediaQuery.of(context).size.height/3.4,
-                  child: ListView(
-                    primary: false,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width / 30),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 30,
-                      ),
-                      protectCard(
-                        screen: CoronavirusScreen(),
-                        imageFilePath: './assets/images/coronavirus.jpg',
-                        protectTitle: 'COVID-19',
-                        protectInformation: 'Description...',
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 10,
-                      ),
-                      protectCard(
-                        screen: ClimateChangeScreen(),
-                        imageFilePath: './assets/images/climate-change.jpg',
-                        protectTitle: 'Climate Change',
-                        protectInformation: 'Description...',
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 10,
-                      ),
-                      protectCard(
-                        screen: AmazonRainforestScreen(),
-                        imageFilePath: './assets/images/amazon-rainforest.jpg',
-                        protectTitle: 'Amazon Rainforest',
-                        protectInformation: 'Description...',
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 10,
-                      ),
-                      protectCard(
-                        screen: GreatBarrierReefScreen(),
-                        imageFilePath: './assets/images/reef.png',
-                        protectTitle: 'The Great Barrier Reef',
-                        protectInformation: 'Description...',
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 15,
-                      ),
-                    ],
+                Center(
+                  child: Container(
+                    height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.6 : MediaQuery.of(context).size.height/3.4,
+                    child: ListView(
+                      primary: false,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width / 30),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 30,
+                        ),
+                        protectCard(
+                          screen: CoronavirusScreen(),
+                          imageFilePath: './assets/images/coronavirus.jpg',
+                          protectTitle: 'COVID-19',
+                          protectInformation: 'Description...',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 20),
