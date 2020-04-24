@@ -28,23 +28,26 @@ class protectCard extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
             child: Container(
-              height: MediaQuery.of(context).size.height/2.5,
-              width: MediaQuery.of(context).size.width/2.1  ,
+              height: MediaQuery.of(context).size.height / 2.5,
+              width: MediaQuery.of(context).size.width / 2.1,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30.0),
                 boxShadow: [
                   BoxShadow(
-                      blurRadius: 6.0,
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 5.0)
+                    blurRadius: 6.0,
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 5.0,
+                  )
                 ],
               ),
               child: Column(
                 children: <Widget>[
                   Container(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(15.0)),
                       child: Image.asset(
                         imageFilePath,
                         height: 150.0,
