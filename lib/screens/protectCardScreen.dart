@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:protect/components/protectCard.dart';
 import 'package:protect/screens/protects/coronavirus.dart';
+import 'package:protect/screens/protects/climateChange.dart';
 
 
 class ProtectCardScreen extends StatefulWidget {
@@ -40,7 +41,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen>{
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
                       protectCard(screen: CoronavirusScreen(), imageFilePath: './assets/images/coronavirus.jpg', protectTitle: 'COVID-19', protectInformation: 'Description...',),
-                      protectCard(imageFilePath: './assets/images/climate-change.jpg', protectTitle: 'Climate Change', protectInformation: 'Description...',),
+                      protectCard(screen: ClimateChangeScreen(),imageFilePath: './assets/images/climate-change.jpg', protectTitle: 'Climate Change', protectInformation: 'Description...',),
                       protectCard(imageFilePath: './assets/images/amazon-rainforest.jpg', protectTitle: 'Amazon Rainforest', protectInformation: 'Description...',),
                       protectCard(imageFilePath: './assets/images/reef.png', protectTitle: 'The Great Barrier Reef', protectInformation: 'Description...',),
                     ],
