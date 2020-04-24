@@ -158,6 +158,10 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - agora_rtc_engine (1.0.10):
+    - AgoraRtcEngine_iOS_Crypto (= 2.9.1)
+    - Flutter
+  - AgoraRtcEngine_iOS_Crypto (2.9.1)
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
@@ -294,6 +298,8 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - "permission_handler (5.0.0+hotfix.3)":
+    - Flutter
   - PromisesObjC (1.2.8)
   - shared_preferences (0.0.1):
     - Flutter
@@ -303,6 +309,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - cloud_firestore_web (from `.symlinks/plugins/cloud_firestore_web/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
@@ -310,6 +317,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_core_web (from `.symlinks/plugins/firebase_core_web/ios`)
   - Flutter (from `Flutter`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
   - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
@@ -317,6 +325,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - AgoraRtcEngine_iOS_Crypto
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
@@ -340,6 +349,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  agora_rtc_engine:
+    :path: ".symlinks/plugins/agora_rtc_engine/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   cloud_firestore_web:
@@ -354,6 +365,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core_web/ios"
   Flutter:
     :path: Flutter
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   shared_preferences_macos:
@@ -363,6 +376,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
+  agora_rtc_engine: 0b7ba4930034ab5fb6fe2c9c64bb1739feea2551
+  AgoraRtcEngine_iOS_Crypto: c2bca616406c6dda9ae254d59637a18ba0fae8f0
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   cloud_firestore: 31454d48df21f3e1a900015e36143c0d46a304b7
   cloud_firestore_web: 9ec3dc7f5f98de5129339802d491c1204462bfec
@@ -390,6 +405,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  permission_handler: 4a985b5448897c27fdeadde84f7452520c0e6c58
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
