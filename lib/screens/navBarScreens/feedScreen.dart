@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:protect/data/webScraper.dart' as scraper;
 import 'package:http/http.dart';
 import 'package:protect/screens/create_post.dart';
@@ -33,29 +34,34 @@ class _FeedScreenState extends State<FeedScreen> {
         actions: <Widget>[],
       ),
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: StreamBuilder<QuerySnapshot>(
-                  stream: _firestore
-                      .collection('posts')
-                      .orderBy('timestamp', descending: true)
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData)
-                      return Center(child: CircularProgressIndicator());
-                    return ListView.builder(
-                        itemExtent: 80.0,
-                        itemCount: snapshot.data.documents.length,
-                        itemBuilder: (context, index) => _buildPost(
-                            context, snapshot.data.documents[index]));
-                  }),
-            ),
-//            SizedBox(height: MediaQuery.of(context).size.height/300),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: StreamBuilder<QuerySnapshot>(
+                stream: _firestore
+                    .collection('posts')
+                    .orderBy('timestamp', descending: true)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData)
+                    return Center(child: CircularProgressIndicator());
+                  return ListView.builder(
+                      itemExtent: MediaQuery.of(context).size.height/1.6,
+                      itemCount: snapshot.data.documents.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: <Widget>[
+                            SizedBox(height: MediaQuery.of(context).size.height/50),
+                            _buildPost(
+                                context, snapshot.data.documents[index]),
+                          ],
+                        );
+                      });
+                }
+          ),
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height/30),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -70,14 +76,20 @@ class _FeedScreenState extends State<FeedScreen> {
       ),
     );
   }
-
   Widget _buildPost(BuildContext context, DocumentSnapshot document) {
     return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height / 2,
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height/1.7 ,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(0.0, 1.0), //(x,y)
+            blurRadius: 6.0,
+          ),
+        ],
       ),
       child: Column(
         children: <Widget>[
@@ -102,7 +114,7 @@ class _FeedScreenState extends State<FeedScreen> {
                       child: Image(
                         height: 50.0,
                         width: 50.0,
-                        image: AssetImage('./assets/images/profile.png'),
+                        image: AssetImage("assets/images/profile.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -114,56 +126,49 @@ class _FeedScreenState extends State<FeedScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: Text("${document['date']}"),
+                subtitle: Text(
+                    "${document['date']}"),
                 trailing: IconButton(
                   icon: Icon(Icons.filter_frames),
                   color: Colors.black,
-                  onPressed: () => null ,
+                  onPressed: () => print('More'),
                 ),
               ),
-              InkWell(
-                child: Container(
-                  margin: EdgeInsets.all(10.0),
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height / 3.5,
-                  decoration: BoxDecoration(
+
+              Container(
+                margin: EdgeInsets.all(10.0),
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height / 3.5,
+                decoration: BoxDecoration(
 //                    color: Colors.black12,
-                    borderRadius: BorderRadius.circular(25.0),
-                    boxShadow: [
+                  borderRadius: BorderRadius.circular(25.0),
+                  boxShadow: [
 //                      BoxShadow(
 //                        color: Colors.black45,
 //                        offset: Offset(0, 5),
 //                        blurRadius: 1.0,
 //                      ),
-                    ],
-                  ),
-                  child: Image(
-                    image: NetworkImage('${document['imageURL']}'),
-                  ),
+                  ],
+                ),
+                child: Image(
+                  image: NetworkImage('${document['imageURL']}'),
+                  fit: BoxFit.contain,
                 ),
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    " ${document['hashtags']}",
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                  )
+                  Text("${document['hashtags']}".replaceAll(']''', '').replaceAll('[', ""), style: TextStyle(color: Colors.blue,),)
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Flexible(
-                      child: Text(
-                    "${document['description']}",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w500),
-                  )),
+                  Expanded(child: Center(child: Text("${document['description']}".replaceAll(']''', '').replaceAll('[', ""), style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),))),
                 ],
               ),
+
             ],
           ),
         ],
