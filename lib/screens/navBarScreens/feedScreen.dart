@@ -65,7 +65,7 @@ class _FeedScreenState extends State<FeedScreen> {
   Widget _buildPost(int index) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height / 1.7,
+      height: MediaQuery.of(context).size.height / 1.7  ,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),

@@ -42,6 +42,12 @@ dependencies:
   fancy_on_boarding:
   image_picker: ^0.6.3+4
   image_cropper: ^1.2.1
+  device_info:
+  flutter_blue:
+  flutter_bluetooth_serial:
+  flutter_scan_bluetooth:
+  wifi_info_plugin:
+  firebase_storage:
 
 dev_dependencies:
   flutter_test:
