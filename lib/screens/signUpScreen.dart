@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protect/animations/buttonLoginAnimation.dart';
+import 'package:protect/animations/fadeAnimation.dart';
 import 'package:protect/components/customTextfield.dart';
 import 'package:protect/animations/dashAnimation.dart';
 import 'package:protect/screens/firstScreen.dart';
@@ -58,18 +59,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Center(
-                          child: Text("Become a Hero",
+                          child: FadeAnimation(0.4,Text("Become a Hero",
                               style: TextStyle(
                                   color: Color(0xFFF032f42),
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold)),
-                        ),
+                        ),),
                         Center(
-                          child: Text("Sign up to continue",
+                          child: FadeAnimation(0.4,Text("Sign up to continue",
                               style: TextStyle(color: Colors.grey, fontSize: 25)),
-                        ),
+                        ),),
                         SizedBox(height: 40),
-                        TextField(
+                        FadeAnimation(0.4,TextField(
                           onChanged: (value) {
 
                           },
@@ -94,9 +95,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Color(0xFFF032f41),
                             ),
                           ),
-                        ),
+                        ),),
                         SizedBox(height: 10),
-                        TextField(
+                        FadeAnimation(0.4,TextField(
                           onChanged: (value) {
 
                           },
@@ -125,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Color(0xFFF032f41),
                             ),
                           ),
-                        ),
+                        ),),
                         SizedBox(height: 40),
                         Center(
 //                          child: MaterialButton(
@@ -163,13 +164,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Container(
                           height: MediaQuery.of(context).size.height/14,
                           width: MediaQuery.of(context).size.width/2.8,
-                          child: FlatButton(
+                          child: FadeAnimation(0.4,FlatButton(
                             onPressed: () {},
                             color: Colors.deepPurpleAccent,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             child: Text("Sign Up", style: TextStyle(color: Colors.white),),
-                          ),
+                          ),),
                         ),
                         )
                       ],
