@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:protect/components/protectCard.dart';
+import 'package:protect/screens/protects/amazonRainforest.dart';
 import 'package:protect/screens/protects/coronavirus.dart';
 import 'package:protect/screens/protects/climateChange.dart';
+import 'package:protect/screens/protects/greatBarrierReef.dart';
 
 class ProtectCardScreen extends StatefulWidget {
   @override
@@ -76,6 +78,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                         width: MediaQuery.of(context).size.width / 10,
                       ),
                       protectCard(
+                        screen: AmazonRainforestScreen(),
                         imageFilePath: './assets/images/amazon-rainforest.jpg',
                         protectTitle: 'Amazon Rainforest',
                         protectInformation: 'Description...',
@@ -84,6 +87,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                         width: MediaQuery.of(context).size.width / 10,
                       ),
                       protectCard(
+                        screen: GreatBarrierReefScreen(),
                         imageFilePath: './assets/images/reef.png',
                         protectTitle: 'The Great Barrier Reef',
                         protectInformation: 'Description...',
