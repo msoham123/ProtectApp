@@ -41,7 +41,7 @@ class InfoScreen extends StatelessWidget {
                       Flexible(
                         child: SymptomCard(
                           image: "assets/images/caugh.png",
-                          title: "Caugh",
+                          title: "Cough",
                         ),
                       ),
                       Flexible(
