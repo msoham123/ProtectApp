@@ -53,6 +53,74 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
               textTop: "All you need",
               textBottom: "is to stay at\nhome.",
             ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => InfoScreen()));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width/2.5,
+                    height: MediaQuery.of(context).size.height/15,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Get more details',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(
+                          Icons.details,
+                          color: Colors.white,
+                          size: 18.0,
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: kRecovercolor,
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                NewsScreen(searchQuery: "coronavirus")));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width/2.5,
+                    height: MediaQuery.of(context).size.height/15,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Get news',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(
+                          Icons.short_text,
+                          color: Colors.white,
+                          size: 18.0,
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: MediaQuery.of(context).size.height/20),
+
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -93,72 +161,9 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InfoScreen()));
-                  },
-                  child: Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
-                    margin: EdgeInsets.only(left: 30.0),
-                    child: Row(
-                      children: <Widget>[
-                        Text(
-                          'Get more details',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        Icon(
-                          Icons.details,
-                          color: Colors.white,
-                          size: 18.0,
-                        ),
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                      color: kRecovercolor,
-                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                NewsScreen(searchQuery: "coronavirus")));
-                  },
-                  child: Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
-                    margin: EdgeInsets.only(left: 5.0),
-                    child: Row(
-                      children: <Widget>[
-                        Text(
-                          'Get news',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        Icon(
-                          Icons.short_text,
-                          color: Colors.white,
-                          size: 18.0,
-                        ),
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                      color: kRecovercolor,
-                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
+
+            SizedBox(height: MediaQuery.of(context).size.height/20),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -173,7 +178,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                               style: kTitleTextstyle,
                             ),
                             TextSpan(
-                              text: "Newest update March 28",
+                              text: "Newest update: ${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}",
                               style: TextStyle(
                                 color: kTextLightColor,
                               ),
