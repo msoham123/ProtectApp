@@ -4,15 +4,19 @@ class ArticleModel {
   String author;
   String source;
   String title;
+  String description;
+  String publishedAt;
   String url;
   String urlToImage;
   String content;
 
   ArticleModel(
-      {@required author,
-      @required source,
-      @required title,
-      @required url,
-      @required urlToImage,
-      @required content});
+      {@required this.author,
+      @required this.source,
+      @required this.title,
+      @required this.description,
+      @required this.publishedAt,
+      @required this.url,
+      @required this.urlToImage,
+      @required this.content});
 }
