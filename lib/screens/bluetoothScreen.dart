@@ -193,7 +193,7 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
         ),
       );
     }
-    return Column(
+    return ListView(
       children: containers,
     );
   }
@@ -275,24 +275,15 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
               height: MediaQuery.of(context).size.height / 60,
             ),
 
-            RaisedButton(
-              child: Text("Search for Devices"),
-              color: Colors.blue,
-              onPressed: () {
-                flutterBlue.startScan();
-              },
-            ),
+//            RaisedButton(
+//              child: Text("Search for Devices"),
+//              color: Colors.blue,
+//              onPressed: () {
+//                flutterBlue.startScan();
+//              },
+//            ),
             Expanded(
-              child: ListView(
-                children: <Widget>[
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 20,
-                  ),
-
-                  _buildListViewOfDevices(),
-                ],
-              ),
+              child: _buildView(),
             ),
             SizedBox(height: MediaQuery
                 .of(context)
