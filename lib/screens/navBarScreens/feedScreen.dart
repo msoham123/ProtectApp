@@ -127,7 +127,7 @@ class _FeedScreenState extends State<FeedScreen> {
                   ),
                 ),
                 subtitle: Text(
-                    "${document['date']}"),
+                    "${document['date']}".replaceAll("  ", "at").replaceAll(" ", " - ").replaceAll("at", " at ").replaceAll("- P", "P")),
                 trailing: IconButton(
                   icon: Icon(Icons.filter_frames),
                   color: Colors.black,
