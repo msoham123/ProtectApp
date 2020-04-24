@@ -40,7 +40,7 @@ class _MessageScreenState extends State<MessageScreen>{
                 ],
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height/25),
+//            SizedBox(height: MediaQuery.of(context).size.height/25),
           ],
         ),
       ),

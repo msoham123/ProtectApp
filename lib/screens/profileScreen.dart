@@ -56,11 +56,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: ListView(
                 children: <Widget>[
+
                   SizedBox(height: 10.0),
-                  Container(
-                    color: Colors.green,
-                    height: MediaQuery.of(context).size.height * 1.5,
-                  )
+
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height/4,
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black38,
+                            offset: Offset(0.0, 2.0),
+                            blurRadius: 20.0,
+                          ),
+                        ],
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurpleAccent,
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38,
+                              offset: Offset(0.0, 2.0),
+                              blurRadius: 20.0,
+                            ),
+                          ],
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/profile.png'),
+                              fit: BoxFit.contain
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Flexible(
+                        child: Text(
+                          'Soham Manoli',
+                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+
+
+
                 ],
               ),
             ),
@@ -77,18 +133,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("Confirmation"),
-          content: new Text("Are you sure you want to log out?"),
+          title: Text("Confirmation"),
+          content: Text("Are you sure you want to log out?"),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Close"),
+            FlatButton(
+              child: Text("Close"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
-            new FlatButton(
-              child: new Text("Logout"),
+            FlatButton(
+              child: Text("Logout"),
               onPressed: () {
                 Navigator.of(context).pop();
                 _signOut(context);

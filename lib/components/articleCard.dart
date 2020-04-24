@@ -30,7 +30,7 @@ class ArticleCard extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black38,
                   offset: Offset(0.0, 2.0),
-                  blurRadius: 20.0,
+                  blurRadius: 10.0,
                 ),
               ],
             ),
