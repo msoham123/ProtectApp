@@ -3,7 +3,7 @@ import 'package:protect/constant.dart';
 import 'package:protect/components/my_header.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:protect/components/counter.dart';
-import 'package:protect/screens/protects/info_screen.dart';
+import 'package:protect/screens/protects/corona_info_screen.dart';
 
 class CoronavirusScreen extends StatefulWidget {
   @override

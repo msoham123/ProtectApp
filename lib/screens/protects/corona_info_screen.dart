@@ -38,18 +38,24 @@ class InfoScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      SymptomCard(
-                        image: "assets/images/headache.png",
-                        title: "Headache",
-                        isActive: true,
+                      Flexible(
+                        child: SymptomCard(
+                          image: "assets/images/caugh.png",
+                          title: "Caugh",
+                        ),
                       ),
-                      SymptomCard(
-                        image: "assets/images/caugh.png",
-                        title: "Caugh",
+                      Flexible(
+                        child: SymptomCard(
+                          image: "assets/images/headache.png",
+                          title: "Headache",
+                          isActive: true,
+                        ),
                       ),
-                      SymptomCard(
-                        image: "assets/images/fever.png",
-                        title: "Fever",
+                      Flexible(
+                        child: SymptomCard(
+                          image: "assets/images/fever.png",
+                          title: "Fever",
+                        ),
                       ),
                     ],
                   ),
@@ -137,10 +143,13 @@ class PreventCard extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: SvgPicture.asset("assets/icons/forward.svg"),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/60,
                     ),
+//                    Align(
+//                      alignment: Alignment.topRight,
+//                      child: SvgPicture.asset("assets/icons/forward.svg"),
+//                    ),
                   ],
                 ),
               ),

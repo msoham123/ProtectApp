@@ -43,9 +43,13 @@ class protectCard extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Container(
-                    child: Image.asset(
-                      imageFilePath,
-                      height: MediaQuery.of(context).size.height/4,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
+                      child: Image.asset(
+                        imageFilePath,
+                        height: 150.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
