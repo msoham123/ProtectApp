@@ -27,13 +27,15 @@ class MyHeader extends StatelessWidget {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color(0xFF3383CD),
-              Color(0xFF11249F),
+//              Color(0xFF3383CD),
+//              Color(0xFF11249F),
+              Colors.deepPurple,
+              Colors.deepPurpleAccent
             ],
           ),
-          image: DecorationImage(
-            image: AssetImage("assets/images/virus.png"),
-          ),
+//          image: DecorationImage(
+//            image: AssetImage("assets/images/virus.png"),
+//          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
