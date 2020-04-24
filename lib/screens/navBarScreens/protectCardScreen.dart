@@ -50,7 +50,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 30),
                 Container(
-                  height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.5 : MediaQuery.of(context).size.height/3,
+                  height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.5 : MediaQuery.of(context).size.height/3.4,
                   child: ListView(
                     primary: false,
                     padding: EdgeInsets.symmetric(
@@ -101,7 +101,6 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 20),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

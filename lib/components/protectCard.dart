@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protect/screens/protectInfoScreen.dart';
+import 'dart:io' show Platform;
 
 class protectCard extends StatelessWidget {
   String protectTitle;
@@ -18,7 +19,7 @@ class protectCard extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-//      height: MediaQuery.of(context).size.height/5,
+          height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.5 : MediaQuery.of(context).size.height/3.5,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(30.0),
