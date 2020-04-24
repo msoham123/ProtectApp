@@ -54,6 +54,14 @@ class _MessageScreenState extends State<MessageScreen>{
                 shrinkWrap: true,
                 children: <Widget>[
                   SizedBox(height: 10.0),
+
+
+//                  Container(
+//                    color: Colors.blue,
+//                    height: MediaQuery.of(context).size.height*1.5,
+//                  )
+
+
                 ],
               ),
             ),
