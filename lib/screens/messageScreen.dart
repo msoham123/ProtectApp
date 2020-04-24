@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:protect/videoChat/index.dart';
 
 class MessageScreen extends StatefulWidget {
   @override
@@ -49,6 +50,12 @@ class _MessageScreenState extends State<MessageScreen>{
                   SizedBox(height: 10.0),
 
 
+                  FlatButton(
+                    child: Text("VideoChat"),
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => IndexPage()));
+                    },
+                  )
 
 
 
