@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:protect/screens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
+import 'package:protect/services/firestore_service.dart';
 import 'package:flutter/services.dart' as service;
 
 //Device Preview
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<FirebaseAuthService>(
           create: (_) => FirebaseAuthService(),
+        ),
+        Provider<FirestoreService>(
+          create: (_) => FirestoreService()
         )
       ],
       child: MaterialApp(

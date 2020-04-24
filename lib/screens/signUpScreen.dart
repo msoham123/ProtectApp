@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:protect/animations/fadeAnimation.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:protect/services/firestore_service.dart';
+import 'package:protect/services/firebase_auth_service.dart';
+import 'package:provider/provider.dart';
+import 'package:protect/navScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -22,6 +25,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
     ageController = new TextEditingController();
     emailController = new TextEditingController();
     passwordController = new TextEditingController();
+  }
+
+  Future<void> createUserWithEmailAndPassword(BuildContext context) async {
+    int userAge = int.parse(ageController.text.trim());
+      try {
+        final auth = Provider.of<FirebaseAuthService>(context, listen: false);
+        final user = await auth.createUserWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim());
+        final firestore = Provider.of<FirestoreService>(context, listen: false);
+        firestore.updateUserData(uid: user.uid, full_name: nameController.text.trim(), age: userAge);
+        if (user != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NavScreen(),
+            ),
+          );
+        }
+      } catch (e) {
+        print(e);
+      }
   }
 
   @override
@@ -223,45 +246,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     SizedBox(height: 40),
                     Center(
-//                          child: MaterialButton(
-//                            onPressed: () async {
-////                              try {
-////                                final result =
-////                                    await _auth.createUserWithEmailAndPassword(
-////                                        email: email,
-////                                        password: password);
-////                                FirebaseUser user = result.user;
-////
-////                                if (result != null) {
-////                                  Navigator.push(
-////                                    context,
-////                                    MaterialPageRoute(
-////                                      builder: (context) => NavScreen(),
-////                                    ),
-////                                  );
-////                                } else {
-////                                  print(result);
-////                                }
-////                              } catch (e) {
-////                                print(e);
-////                              }
-//                            },
-//                            child: Text(
-//                              "Sign up",
-//                              style:
-//                                  TextStyle(color: Colors.white, fontSize: 20),
-//                            ),
-//                            color: Colors.blue,
-//                            padding: EdgeInsets.symmetric(
-//                                horizontal: 30, vertical: 20),
-//                          ),
                       child: Container(
                         height: MediaQuery.of(context).size.height / 14,
                         width: MediaQuery.of(context).size.width / 2.8,
                         child: FadeAnimation(
                           0.4,
                           FlatButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              createUserWithEmailAndPassword(context);
+                            },
                             color: Colors.deepPurpleAccent,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
