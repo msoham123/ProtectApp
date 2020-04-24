@@ -62,7 +62,7 @@ class _FeedScreenState extends State<FeedScreen>{
                     height: MediaQuery.of(context).size.height/20,
                   ),
 
-                  Center(child: Text(response, style: TextStyle(color: Colors.white),)),
+                  Center(child: Text(response, style: TextStyle(color: Colors.black),)),
 
                   SizedBox(
                     height: MediaQuery.of(context).size.height/20,
