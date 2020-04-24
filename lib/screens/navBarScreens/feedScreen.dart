@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:protect/components/articleCard.dart';
 import 'package:protect/data/webScraper.dart' as scraper;
 import 'package:http/http.dart';
 import 'package:protect/screens/create_post.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final _firestore = Firestore.instance;
 
 class FeedScreen extends StatefulWidget {
   @override
@@ -36,13 +38,20 @@ class _FeedScreenState extends State<FeedScreen> {
         child: Column(
           children: <Widget>[
             Expanded(
-              child: ListView(
-                children: <Widget>[
-                  SizedBox(height: 10.0),
-                  _buildPost(0),
-                  _buildPost(1),
-                ],
-              ),
+              child: StreamBuilder<QuerySnapshot>(
+                  stream: _firestore
+                      .collection('posts')
+                      .orderBy('timestamp', descending: true)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData)
+                      return Center(child: CircularProgressIndicator());
+                    return ListView.builder(
+                        itemExtent: 80.0,
+                        itemCount: snapshot.data.documents.length,
+                        itemBuilder: (context, index) => _buildPost(
+                            context, snapshot.data.documents[index]));
+                  }),
             ),
 //            SizedBox(height: MediaQuery.of(context).size.height/300),
           ],
@@ -62,10 +71,10 @@ class _FeedScreenState extends State<FeedScreen> {
     );
   }
 
-  Widget _buildPost(int index) {
+  Widget _buildPost(BuildContext context, DocumentSnapshot document) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height / 2 ,
+      height: MediaQuery.of(context).size.height / 2,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
@@ -93,20 +102,19 @@ class _FeedScreenState extends State<FeedScreen> {
                       child: Image(
                         height: 50.0,
                         width: 50.0,
-                        image: AssetImage("assets/images/profile.png"),
+                        image: AssetImage('./assets/images/profile.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ),
                 title: Text(
-                  postName[index],
+                  document['sender'],
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: Text(
-                    "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}"),
+                subtitle: Text("${document['date']}"),
                 trailing: IconButton(
                   icon: Icon(Icons.filter_frames),
                   color: Colors.black,
@@ -128,23 +136,32 @@ class _FeedScreenState extends State<FeedScreen> {
 //                        blurRadius: 1.0,
 //                      ),
                     ],
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/reef.png"),
-                      fit: BoxFit.contain,
-                    ),
+                  ),
+                  child: Image(
+                    image: NetworkImage('${document['imageURL']}'),
                   ),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("#Protect #DavidDobervich", style: TextStyle(color: Colors.blue,),)
+                  Text(
+                    " ${document['hashtags']}",
+                    style: TextStyle(
+                      color: Colors.blue,
+                    ),
+                  )
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Flexible(child: Text("Description", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),)),
+                  Flexible(
+                      child: Text(
+                    "${document['description']}",
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w500),
+                  )),
                 ],
               ),
             ],
