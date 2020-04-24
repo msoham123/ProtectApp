@@ -9,7 +9,7 @@ class COVID {
   int HTTP_SUCCESS_CODE = 200;
 
   Future<CountryModel> fetchCountry(String countryQuery) async {
-    var response = await http.get('${_baseURL}/${_sortQuery}/${countryQuery}');
+    var response = await http.get('${_baseURL}/v2/${_sortQuery}/${countryQuery}');
     try {
       if (response.statusCode == HTTP_SUCCESS_CODE) {
         var jsonData = jsonDecode(response.body);
