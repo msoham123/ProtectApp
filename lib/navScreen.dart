@@ -1,17 +1,12 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:protect/screens/addProtectScreen.dart';
 import 'package:protect/screens/feedScreen.dart';
-import 'package:protect/screens/firstScreen.dart';
 import 'package:protect/screens/messageScreen.dart';
 import 'package:protect/screens/profileScreen.dart';
 import 'package:protect/screens/protectCardScreen.dart';
 
 import 'main.dart';
-
-
 
 class NavScreen extends StatefulWidget {
   @override
@@ -88,9 +83,9 @@ class _NavScreenState extends State<NavScreen> {
 //            MainScreen(), list of screens here
 //            MapScreen(),
 //            myChatBotScreen(),
+            ProtectCardScreen(),
             FeedScreen(),
             MessageScreen(),
-            ProtectCardScreen(),
             ProfileScreen(),
           ],
         ),
