@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import '../screens/article_view.dart';
 
 class NewsTile extends StatelessWidget {
-  final String imgUrl, title, desc, content, posturl;
+  final String imgUrl, title, desc, content, posturl, source;
 
   NewsTile(
       {this.imgUrl,
       this.desc,
       this.title,
       this.content,
+      this.source,
       @required this.posturl});
 
   @override
@@ -39,14 +40,37 @@ class NewsTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: Image.network(
-                        imgUrl,
-                        height: 200,
-                        width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.cover,
-                      )),
+                  Stack(
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(6),
+                        child: Image.network(
+                          imgUrl,
+                          height: 200,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Positioned(
+                        top: 10,
+                        right: 10,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 3.0, horizontal: 5.0),
+                          decoration: BoxDecoration(
+                            color: Colors.purpleAccent.withOpacity(0.9),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.0),
+                            ),
+                          ),
+                          child: Text(
+                            source,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                   SizedBox(
                     height: 12,
                   ),
