@@ -108,9 +108,9 @@ class _FeedScreenState extends State<FeedScreen> {
                 subtitle: Text(
                     "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}"),
                 trailing: IconButton(
-                  icon: Icon(Icons.more_horiz),
+                  icon: Icon(Icons.filter_frames),
                   color: Colors.black,
-                  onPressed: () => print('More'),
+                  onPressed: () => null ,
                 ),
               ),
               InkWell(

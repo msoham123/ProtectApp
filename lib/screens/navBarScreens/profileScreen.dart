@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:protect/data/flutterBlue.dart';
 import 'package:protect/main.dart';
 import 'package:protect/models/ProtectUser.dart';
 import 'package:protect/screens/login+signupScreens/firstScreen.dart';
@@ -17,6 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final _auth = FirebaseAuth.instance;
   String fullName = '';
   int protectPoints = 0;
+  String data = "";
 
   @override
   void initState() {
@@ -157,6 +159,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/20,
+                  ),
+                  RaisedButton(
+                    child: Text("Bluetooth"),
+                    color: Colors.blue,
+                    onPressed: (){
+                      var device = FlutterBluetooth(isOnline: false);
+                      device.turnDeviceOn();
+                      data = device.getFeed();
+                      setState(() {
+                        data = data;
+                      });
+                      device.scanForNearbyDevices();
+                      data = device.getFeed();
+                      setState(() {
+                        data = data;
+                      });
+                    },
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height / 25),
+                  Text("Bluetooth Data: $data")
                 ],
               ),
             ),

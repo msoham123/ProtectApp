@@ -15,6 +15,10 @@ class FlutterBluetooth with ChangeNotifier{
   String _feed = "No Connection";
   bool  _isScanning = false;
 
+  FlutterBluetooth({
+   @required this.isOnline,
+});
+
   //Initialize
   FlutterBluetooth.initialize(){
     scanForNearbyDevices();
@@ -52,6 +56,7 @@ class FlutterBluetooth with ChangeNotifier{
         //Save Device Name + Address into Feed
         _feed = _feed + event.name+' (${event.address})\n';
         notifyListeners();
+        return _feed;
       });
     }
 
