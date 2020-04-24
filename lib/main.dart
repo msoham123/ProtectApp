@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:protect/services/firestore_service.dart';
 import 'package:flutter/services.dart' as service;
+import 'package:protect/screens/IntroScreen.dart';
 
 //Device Preview
 //void main() => runApp(DevicePreview(builder: (context) => MyApp()));
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   static int currentIndex = 0;
   static String email = '';
   static String password = '';
+  static List<String> protectList = [];
 
 
   @override

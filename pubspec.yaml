@@ -31,6 +31,8 @@ dependencies:
   newsapi_client:
   html:
   http:
+  intro_slider:
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
