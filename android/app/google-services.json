@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "950579397341",
+    "firebase_url": "https://protect-a12be.firebaseio.com",
+    "project_id": "protect-a12be",
+    "storage_bucket": "protect-a12be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950579397341:android:9826aa56d432a6bf815134",
+        "android_client_info": {
+          "package_name": "ml.aryanvichare.protect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950579397341-1n66vlj83ap4rdjjnkivh97aagaj5aub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrOrHkhS-HPGXRmUEsVcJpNGuoCLLc2m4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950579397341-1n66vlj83ap4rdjjnkivh97aagaj5aub.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "950579397341-r47pgde9v0genhg8pp5ulkpvn05hqgmb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ml.aryanvichare.protect"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
