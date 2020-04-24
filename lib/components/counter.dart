@@ -17,6 +17,7 @@ class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
           padding: EdgeInsets.all(6),
@@ -41,7 +42,7 @@ class Counter extends StatelessWidget {
         Text(
           "${NumberFormat("#,###").format(number)}",
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 25,
             color: color,
           ),
         ),
