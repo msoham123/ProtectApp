@@ -22,12 +22,14 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
   bool _isloading = true;
   PieChartData pieChartData = PieChartData();
   TextEditingController paymentController = new TextEditingController();
+  double _paymentAmount = 0.0;
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    paymentController.clear();
     fetchCOVIDData(selectedCountry);
   }
 
@@ -419,9 +421,12 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
         return AlertDialog(
           title: Text("Confirmation"),
           content: Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              SizedBox(height: 5.0),
               Text(
                   "Thank you for doing the noble cause. Your contributions are greatly appreciated."),
+              SizedBox(height: 10.0),
               Form(
                 child: Column(
                   children: <Widget>[
@@ -440,6 +445,10 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         hintText: "ex: 5.00",
                         border: OutlineInputBorder(),
                       ),
+                      onChanged: (val) {
+                        _paymentAmount = double.parse(val);
+                        print(_paymentAmount);
+                      },
                     ),
                   ],
                 ),
@@ -473,7 +482,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   tokenizationKey: tokenizationKey,
                   collectDeviceData: true,
                   googlePaymentRequest: BraintreeGooglePaymentRequest(
-                    totalPrice: '4.20',
+                    totalPrice: _paymentAmount.toString(),
                     currencyCode: 'USD',
                     billingAddressRequired: false,
                   ),
