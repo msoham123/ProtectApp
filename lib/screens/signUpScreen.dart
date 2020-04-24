@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protect/animations/fadeAnimation.dart';
+import 'package:protect/screens/IntroScreen.dart';
 import 'package:protect/services/firestore_service.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:provider/provider.dart';
@@ -38,12 +39,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => NavScreen(),
+              builder: (context) => IntroSlider(),
             ),
           );
         }
       } catch (e) {
         print(e);
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Center(child: Text("Error")),
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Flexible(child: Text("Please fill in all boxes")),
+                ],
+              ),
+              actions: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    FlatButton(
+                      child: Text("Try Again"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        );
       }
   }
 

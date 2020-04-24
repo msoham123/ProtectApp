@@ -9,6 +9,7 @@ class MessageScreen extends StatefulWidget {
 class _MessageScreenState extends State<MessageScreen>{
   final TextEditingController _searchControl = new TextEditingController();
 
+  bool selected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +44,13 @@ class _MessageScreenState extends State<MessageScreen>{
 
             Expanded(
               child: ListView(
+                shrinkWrap: true,
                 children: <Widget>[
                   SizedBox(height: 10.0),
+
+
+
+
 
 //                  Container(
 //                    color: Colors.blue,
