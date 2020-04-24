@@ -282,8 +282,11 @@ PODS:
     - Braintree/PayPal
     - BraintreeDropIn
     - Flutter
+<<<<<<< HEAD
   - flutter_plugin_android_lifecycle (0.0.1):
     - Flutter
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   - GoogleAppMeasurement (6.2.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -329,11 +332,14 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.3.1)
+<<<<<<< HEAD
   - image_cropper (0.0.2):
     - Flutter
     - TOCropViewController (~> 2.5.2)
   - image_picker (0.0.1):
     - Flutter
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -349,7 +355,10 @@ PODS:
     - Flutter
   - shared_preferences_web (0.0.1):
     - Flutter
+<<<<<<< HEAD
   - TOCropViewController (2.5.2)
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   - webview_flutter (0.0.1):
     - Flutter
 
@@ -363,9 +372,12 @@ DEPENDENCIES:
   - firebase_core_web (from `.symlinks/plugins/firebase_core_web/ios`)
   - Flutter (from `Flutter`)
   - flutter_braintree (from `.symlinks/plugins/flutter_braintree/ios`)
+<<<<<<< HEAD
   - flutter_plugin_android_lifecycle (from `.symlinks/plugins/flutter_plugin_android_lifecycle/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
@@ -399,7 +411,10 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+<<<<<<< HEAD
     - TOCropViewController
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
 
 EXTERNAL SOURCES:
   agora_rtc_engine:
@@ -420,12 +435,15 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_braintree:
     :path: ".symlinks/plugins/flutter_braintree/ios"
+<<<<<<< HEAD
   flutter_plugin_android_lifecycle:
     :path: ".symlinks/plugins/flutter_plugin_android_lifecycle/ios"
   image_cropper:
     :path: ".symlinks/plugins/image_cropper/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   permission_handler:
     :path: ".symlinks/plugins/permission_handler/ios"
   shared_preferences:
@@ -462,7 +480,10 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 031d7d0c8e7b5c030bbeb4d2a690550375e83fec
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_braintree: 101b66de3f3ae397c9ee3593c2e24ed67a41eeab
+<<<<<<< HEAD
   flutter_plugin_android_lifecycle: 47de533a02850f070f5696a623995e93eddcdb9b
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   GoogleAppMeasurement: d0560d915abf15e692e8538ba1d58442217b6aff
   GoogleDataTransport: 47fe3b8e1673e5187dfd615656a3c5034f150d69
   GoogleDataTransportCCTSupport: 36f69887fd212db6d7ef4dd45ba44523717a434e
@@ -470,8 +491,11 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+<<<<<<< HEAD
   image_cropper: 3c16d7651730ffe85897f5a1c4e2547e6b54989a
   image_picker: e3eacd46b94694dde7cf2705955cece853aa1a8f
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   permission_handler: 4a985b5448897c27fdeadde84f7452520c0e6c58
@@ -479,7 +503,10 @@ SPEC CHECKSUMS:
   shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
   shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
+<<<<<<< HEAD
   TOCropViewController: e9da34f484aedd4e5d5a8ab230ba217cfe16c729
+=======
+>>>>>>> af2b9b434cf60b70939e021fae4e5f25b070284d
   webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
 
 PODFILE CHECKSUM: 0ba44ad07df4ab62269dc769727cf0f12b1e453d
