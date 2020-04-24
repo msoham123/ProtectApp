@@ -5,7 +5,6 @@ class ArticleCard extends StatelessWidget {
    var articleInformation;
    Image articleImage;
 
-
   ArticleCard({
     @required this.articleTitle,
     @required this.articleProtect,
@@ -120,8 +119,6 @@ class ArticleCard extends StatelessWidget {
 
                   ],
                 ),
-
-
               ],
             ),
           )
