@@ -4,31 +4,34 @@ import 'package:protect/components/articleCard.dart';
 import 'package:protect/data/webScraper.dart' as scraper;
 import 'package:http/http.dart';
 
-
 class FeedScreen extends StatefulWidget {
   @override
   _FeedScreenState createState() => _FeedScreenState();
 }
 
-class _FeedScreenState extends State<FeedScreen>{
+class _FeedScreenState extends State<FeedScreen> {
   final TextEditingController _searchControl = new TextEditingController();
   String response = "This is where the response will be stored";
-  List<String> postName = ["Soham Manoli","Aryan Vichare"];
-
+  List<String> postName = ["Soham Manoli", "Aryan Vichare"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-        title: Center(child: Text("My Feed", style: TextStyle(fontWeight: FontWeight.w700),)),
-          centerTitle: true,
-          backgroundColor: Colors.deepPurple,
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            "My Feed",
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: false,
         actions: <Widget>[],
       ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.fromLTRB(10.0,0,10.0,0),
+        padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -45,12 +48,12 @@ class _FeedScreenState extends State<FeedScreen>{
         ),
       ),
     );
-
   }
+
   Widget _buildPost(int index) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height/1.7,
+      height: MediaQuery.of(context).size.height / 1.7,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
@@ -90,7 +93,8 @@ class _FeedScreenState extends State<FeedScreen>{
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: Text("${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}"),
+                subtitle: Text(
+                    "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}"),
                 trailing: IconButton(
                   icon: Icon(Icons.more_horiz),
                   color: Colors.black,
@@ -98,30 +102,19 @@ class _FeedScreenState extends State<FeedScreen>{
                 ),
               ),
               InkWell(
-                onDoubleTap: () => print('Like post'),
-                onTap: () {
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (_) => ViewPostScreen(
-//                            post: posts[index],
-//                          ),
-//                        ),
-//                      );
-                },
                 child: Container(
                   margin: EdgeInsets.all(10.0),
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height/2.5,
+                  height: MediaQuery.of(context).size.height / 2.5,
                   decoration: BoxDecoration(
-                    color: Colors.black12,
+//                    color: Colors.black12,
                     borderRadius: BorderRadius.circular(25.0),
                     boxShadow: [
-                      BoxShadow(
-                        color: Colors.black45,
-                        offset: Offset(0, 5),
-                        blurRadius: 1.0,
-                      ),
+//                      BoxShadow(
+//                        color: Colors.black45,
+//                        offset: Offset(0, 5),
+//                        blurRadius: 1.0,
+//                      ),
                     ],
                     image: DecorationImage(
                       image: AssetImage("assets/images/reef.png"),
