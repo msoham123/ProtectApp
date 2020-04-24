@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protect/auth_widget.dart';
-import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/login+signupScreens/firstScreen.dart';
+import 'package:protect/screens/login+signupScreens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:protect/services/firestore_service.dart';
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.purple,
         ),
-        home: AuthWidget(),
+        home: FirstScreen(),
       ),
     );
   }

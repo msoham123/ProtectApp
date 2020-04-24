@@ -59,10 +59,10 @@ class _MessageScreenState extends State<MessageScreen>{
 
 
 
-//                  Container(
-//                    color: Colors.blue,
-//                    height: MediaQuery.of(context).size.height*1.5,
-//                  )
+                  Container(
+                    color: Colors.blue,
+                    height: MediaQuery.of(context).size.height*1.5,
+                  )
 
                 ],
               ),
