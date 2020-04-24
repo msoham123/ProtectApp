@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protect/data/newsApi.dart';
+import 'package:protect/data/newsAPI.dart';
 import 'package:protect/components/news_tile.dart';
 
 class NewsScreen extends StatefulWidget {
