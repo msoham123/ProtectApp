@@ -7,12 +7,14 @@ import 'package:protect/constant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:protect/ChatRooms.dart';
 
 FirebaseUser loggedInUser;
 final _firestore = Firestore.instance;
 final _auth = FirebaseAuth.instance;
 String loggedInUserName = '';
 bool _loading = true;
+var chatRoom = 'global_chat';
 
 class MessageScreen extends StatefulWidget {
   @override
@@ -21,7 +23,7 @@ class MessageScreen extends StatefulWidget {
 
 class _MessageScreenState extends State<MessageScreen> {
   final TextEditingController messageTextController =
-      new TextEditingController();
+  new TextEditingController();
   String messageText = '';
 
   bool selected = false;
@@ -34,12 +36,14 @@ class _MessageScreenState extends State<MessageScreen> {
   }
 
   void getCurrentUser() async {
-    final _firestoreService = Provider.of<FirestoreService>(context, listen: false);
+    final _firestoreService = Provider.of<FirestoreService>(
+        context, listen: false);
     try {
       final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
-        DocumentSnapshot ds = await _firestoreService.getUserDocumentSnapshot(loggedInUser.uid);
+        DocumentSnapshot ds = await _firestoreService.getUserDocumentSnapshot(
+            loggedInUser.uid);
         loggedInUserName = ds.data['full_name'];
         setState(() {
           _loading = false;
@@ -70,23 +74,34 @@ class _MessageScreenState extends State<MessageScreen> {
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: false,
         actions: <Widget>[
-          PopupMenuButton<int>(
-            icon: Icon(
-              Icons.arrow_drop_down,
-              size: 35,
-            ),
-            offset: Offset(0, 100),
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 1,
-                child: Text("Global Chat"),
-              ),
-              PopupMenuItem(
-                value: 2,
-                child: Text("Coronavirus Chat"),
-              ),
-            ],
-          ),
+          PopupMenuButton<String>(
+            onSelected: switchRoom,
+            itemBuilder: (BuildContext context) {
+              return ChatRooms.rooms.map((String choice){
+                return PopupMenuItem<String>(
+                    value: choice,
+                    child: Text(choice)
+                );
+              }).toList();
+            },
+          )
+//          PopupMenuButton<int>(
+//            icon: Icon(
+//              Icons.arrow_drop_down,
+//              size: 35,
+//            ),
+//            offset: Offset(0, 100),
+//            itemBuilder: (context) => [
+//              PopupMenuItem(
+//                value: 1,
+//                child: Text("Global Chat"),
+//              ),
+//              PopupMenuItem(
+//                value: 2,
+//                child: Text("Coronavirus Chat"),
+//              ),
+//            ],
+//          ),
         ],
       ),
       backgroundColor: Colors.white,
@@ -95,7 +110,9 @@ class _MessageScreenState extends State<MessageScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            _loading ? Center(child: CircularProgressIndicator()) : MessagesStream(),
+            _loading
+                ? Center(child: CircularProgressIndicator())
+                : MessagesStream(),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
@@ -112,9 +129,9 @@ class _MessageScreenState extends State<MessageScreen> {
                   ),
                   FlatButton(
                     onPressed: () {
-                      if(messageTextController.text != "") {
+                      if (messageTextController.text != "") {
                         messageTextController.clear();
-                        _firestore.collection('global_chat').add({
+                        _firestore.collection(chatRoom).add({
                           'text': messageText,
                           'sender': loggedInUserName,
                           'timestamp': FieldValue.serverTimestamp(),
@@ -134,6 +151,29 @@ class _MessageScreenState extends State<MessageScreen> {
       ),
     );
   }
+  void switchRoom(String room) {
+    if(room == "Coronavirus"){
+      setState(() {
+        chatRoom = 'coronavirus_chat';
+      });
+    } else if(room == 'Global'){
+      setState(() {
+        chatRoom = 'global_chat';
+      });
+    } else if(room == 'Climate Change'){
+      setState(() {
+        chatRoom = 'climate_change_chat';
+      });
+    } else if(room == 'Amazon Rainforest'){
+      setState(() {
+        chatRoom = 'amazon_rainforest_chat';
+      });
+    } else if(room == 'Great Barrier Reef'){
+      setState(() {
+        chatRoom = 'great_barrier_reef_chat';
+      });
+    }
+  }
 }
 
 class MessagesStream extends StatelessWidget {
@@ -141,7 +181,7 @@ class MessagesStream extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: _firestore
-          .collection('global_chat')
+          .collection(chatRoom)
           .orderBy('timestamp', descending: false)
           .snapshots(),
       builder: (context, snapshot) {
@@ -156,7 +196,6 @@ class MessagesStream extends StatelessWidget {
           final messages = snapshot.data.documents.reversed;
           List<MessageBubble> messageBubbles = [];
           for (var message in messages) {
-            // data = document snapshot from firebase
             final messageText = message.data['text'];
             final messageSender = message.data['sender'];
             final currentUser = loggedInUserName;
