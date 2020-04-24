@@ -6,6 +6,7 @@ import 'package:protect/screens/protects/coronavirus.dart';
 import 'package:protect/screens/protects/climateChange.dart';
 import 'package:protect/screens/protects/greatBarrierReef.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io' show Platform;
 
 class ProtectCardScreen extends StatefulWidget {
   @override
@@ -49,7 +50,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 30),
                 Container(
-                  height: MediaQuery.of(context).size.height/2.5,
+                  height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.5 : MediaQuery.of(context).size.height/3,
                   child: ListView(
                     primary: false,
                     padding: EdgeInsets.symmetric(
