@@ -83,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 50),
-                height: MediaQuery.of(context).size.height * 0.70,
+                height: MediaQuery.of(context).size.height * 1,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.white,
