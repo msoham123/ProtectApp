@@ -8,6 +8,7 @@ import 'package:protect/data/covidAPI.dart';
 import 'package:protect/screens/newsScreen.dart';
 import 'package:protect/screens/protects/corona_info_screen.dart';
 import 'package:protect/models/covid_country_model.dart';
+import 'package:protect/screens/protects/covid_map.dart';
 
 class CoronavirusScreen extends StatefulWidget {
   @override
@@ -122,8 +123,45 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 10.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                COVIDMap()));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width/2.5,
+                    height: MediaQuery.of(context).size.height/20,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'View data on map',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(
+                          Icons.map,
+                          color: Colors.white,
+                          size: 18.0,
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
 
-            SizedBox(height: MediaQuery.of(context).size.height/20),
+            SizedBox(height: 20.0),
 
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
