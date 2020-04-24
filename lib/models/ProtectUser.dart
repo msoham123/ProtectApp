@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class ProtectUser {
@@ -13,7 +14,7 @@ class ProtectUser {
       fullName: data['full_name'] as String,
       age: data['age'] as int,
       protectPoints: data['protect_points'] as int,
-      dateAccountCreated: data['date_account_created']
+      dateAccountCreated: (data['date_account_created'] as Timestamp).toDate()
     );
   }
 
