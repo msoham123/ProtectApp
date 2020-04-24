@@ -11,6 +11,7 @@ import 'package:protect/services/firestore_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:intl/intl.dart';
 
 FirebaseUser loggedInUser;
 final _firestore = Firestore.instance;
@@ -238,33 +239,32 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                               textColor: Colors.white,
                               color: Colors.purpleAccent,
                               onPressed: () async {
-                                if(imageFile != null && key.currentState.validate()) {
+                                if (imageFile != null &&
+                                    key.currentState.validate()) {
                                   setState(() {
                                     _inAsyncCall = true;
                                   });
                                   final storageService =
-                                  Provider.of<FirebaseStorageService>(context, listen: false);
-                                  imagePath = await getImagePath(storageService);
+                                      Provider.of<FirebaseStorageService>(
+                                          context,
+                                          listen: false);
+                                  imagePath =
+                                      await getImagePath(storageService);
 
                                   PostModel instance = new PostModel(
                                       sender: loggedInUserName,
                                       description: description,
                                       hashtags: hashtagList,
                                       imageURL: imagePath,
-                                      date: "${DateTime
-                                          .now()
-                                          .year}-${DateTime
-                                          .now()
-                                          .month}-${DateTime
-                                          .now()
-                                          .day}",
-                                    timestamp: FieldValue.serverTimestamp()
-                                  );
+                                      date:
+                                          "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}  ${DateFormat.jm().format(new DateTime.now())}",
+                                      timestamp: FieldValue.serverTimestamp());
                                   createNewPost(context, instance);
                                   resetForm(context);
                                   setState(() {
                                     _inAsyncCall = false;
                                   });
+                                  Navigator.pop(context);
                                 } else {
                                   print('please enter a picture');
                                 }

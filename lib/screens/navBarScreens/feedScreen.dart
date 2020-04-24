@@ -79,7 +79,7 @@ class _FeedScreenState extends State<FeedScreen> {
   Widget _buildPost(BuildContext context, DocumentSnapshot document) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height/1.8 ,
+      height: MediaQuery.of(context).size.height/1.75,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
@@ -165,7 +165,10 @@ class _FeedScreenState extends State<FeedScreen> {
               Wrap(
                 alignment: WrapAlignment.center,
                 children: <Widget>[
-                  Center(child: Text("${document['description']}".replaceAll(']''', '').replaceAll('[', ""), maxLines: 3,style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Center(child: Text("${document['description']}".replaceAll(']''', '').replaceAll('[', ""), maxLines: 10,style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),)),
+                  ),
                 ],
               ),
 

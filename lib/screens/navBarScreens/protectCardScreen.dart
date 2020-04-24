@@ -103,7 +103,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
               ],
             ),
             SizedBox(
-              height: 40.0,
+              height: 50.0,
             ),
             Column(
               children: <Widget>[
@@ -123,6 +123,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                   ],
                 ),
                 Container(
+                  color: Colors.white,
                   height: 500.0,
                   child: StreamBuilder<QuerySnapshot>(
                     stream: firestore
@@ -133,6 +134,10 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                       if (!snapshot.hasData)
                         return Center(child: CircularProgressIndicator());
                       return ListView.builder(
+                        primary: false,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: false,
                         itemExtent: 80.0,
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (context, index) => _buildUserCard(
