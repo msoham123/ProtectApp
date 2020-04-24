@@ -32,6 +32,11 @@ class _ProtectCardScreenState extends State<ProtectCardScreen>{
               shrinkWrap: true,
               children: <Widget>[
                 SizedBox(height: MediaQuery.of(context).size.height/20),
+
+                Row(children: <Widget>[
+                  Text("Protect Information")
+                ],),
+
                 Container(
                   height: 250.0,
                   child: ListView(

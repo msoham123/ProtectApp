@@ -108,7 +108,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => NewsScreen()));
+                        MaterialPageRoute(builder: (context) => NewsScreen(searchQuery: "coronavirus")));
                   },
                   child: Container(
                     padding:
