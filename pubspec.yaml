@@ -26,6 +26,8 @@ dependencies:
   page_transition: ^1.1.4
   curved_navigation_bar:
   newsapi_client:
+  html:
+  http:
 
 
 dev_dependencies:
