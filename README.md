@@ -1,6 +1,6 @@
 # Protect
 
-Submission for the NuevaHacks
+Submission for HackSwiftly
 
 ## Getting Started
 
