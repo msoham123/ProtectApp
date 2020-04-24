@@ -1,6 +1,6 @@
 # Protect
 
-A new Flutter project.
+Submission for the NuevaHacks
 
 ## Getting Started
 
