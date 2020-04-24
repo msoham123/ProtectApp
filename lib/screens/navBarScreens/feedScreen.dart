@@ -50,8 +50,12 @@ class _FeedScreenState extends State<FeedScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => CreatePostScreen()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreatePostScreen(),
+            ),
+          );
         },
         child: Icon(Icons.add),
       ),

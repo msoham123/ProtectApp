@@ -60,5 +60,9 @@
             </array>
         </dict>
     </array>
+    <key>NSCameraUsageDescription</key>
+    <string>Enable Protect to access your camera to capture a photo</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Enable Protect to access your image gallery to select an image</string>
 </dict>
 </plist>

@@ -16,9 +16,10 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
 
   Future<void> _pickImage(BuildContext context) async {
     try {
-      final imageService = Provider.of<ImagePickerService>(context, listen: false);
+      final imageService =
+          Provider.of<ImagePickerService>(context, listen: false);
       final file =
-      await imageService.pickImage(imageSource: ImageSource.gallery);
+          await imageService.pickImage(imageSource: ImageSource.gallery);
       if (file != null) {
         setState(() {
           imageFile = file;
@@ -32,9 +33,10 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
 
   Future<void> _takeImage(BuildContext context) async {
     try {
-      final imageService = Provider.of<ImagePickerService>(context, listen: false);
+      final imageService =
+          Provider.of<ImagePickerService>(context, listen: false);
       final file =
-      await imageService.pickImage(imageSource: ImageSource.camera);
+          await imageService.pickImage(imageSource: ImageSource.camera);
       if (file != null) {
         setState(() {
           imageFile = file;
@@ -51,7 +53,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         sourcePath: imageFile.path,
         iosUiSettings: IOSUiSettings(),
         androidUiSettings: AndroidUiSettings(
-          toolbarTitle: 'Crop Homework',
+          toolbarTitle: 'Crop Image',
           toolbarColor: Colors.white,
           toolbarWidgetColor: Color.fromARGB(255, 104, 194, 249),
           activeControlsWidgetColor: Color.fromARGB(255, 104, 194, 249),
@@ -64,7 +66,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
 
   Widget _decideImageView(BuildContext context) {
     if (imageFile == null) {
-      return Image.asset('/Users/aryan/Documents/Flutter/Protect/assets/images/imageNotFound.png',
+      return Image.asset(
+        './assets/images/image-not-found.png',
         width: MediaQuery.of(context).size.width / 1.5,
       );
     } else {
@@ -78,21 +81,21 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          centerTitle: true,
-          title: Text('Create a Post'),
-          automaticallyImplyLeading: true,
-          elevation: 0.0,
-        ),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        centerTitle: true,
+        title: Text('Create a Post'),
+        automaticallyImplyLeading: true,
+        elevation: 0.0,
+      ),
       body: Builder(
         builder: (context) => Container(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 16,
+                  height: MediaQuery.of(context).size.height / 20,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -115,46 +118,21 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                         cropImage();
                       }),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 35
-                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 35),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width / 10,),
+                    horizontal: MediaQuery.of(context).size.width / 10,
+                  ),
                   child: Form(
                     key: key,
                     child: Column(
                       children: <Widget>[
                         TextFormField(
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return "Please enter some text";
-                            }
-                            return null;
-                          },
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.assignment),
-                              labelText: "Title of Assignment",
-                              border: OutlineInputBorder()),
-                        ),
-                        SizedBox(height: 8),
-                        TextFormField(
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.format_list_numbered),
-                            labelText: "List of problems completed",
-                            hintText: "e.g. 1, 2, 5 (may be empty)",
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        TextFormField(
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.format_list_numbered),
-                            labelText: "Time taken (minutes)",
-                            hintText: "e.g. 5, 10, 15",
+                            labelText: "Hashtags",
+                            hintText: "#coronavirus #stayathome",
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -170,10 +148,31 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.question_answer),
-                            labelText: "Questions or concerns?",
+                            labelText: "Description",
                             border: OutlineInputBorder(),
                           ),
                           maxLines: 5,
+                        ),
+                        SizedBox(height: 10.0),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.2,
+                          child: RaisedButton(
+                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                            child: Text(
+                              "Post",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 15.0),
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(5.0),
+                              side: BorderSide(color: Colors.purpleAccent),
+                            ),
+                            textColor: Colors.white,
+                            color: Colors.purpleAccent,
+                            onPressed: () async {
+                              print('tapped');
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -186,12 +185,13 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       ),
     );
   }
+
   void _showPhotoOptions(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("Snap your homework"),
+          title: new Text("Select a picture"),
           content: new Text(
               "Either take a photo or pick a photo from your image gallery"),
           actions: <Widget>[
