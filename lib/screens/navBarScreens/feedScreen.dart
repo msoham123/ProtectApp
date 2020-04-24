@@ -46,12 +46,12 @@ class _FeedScreenState extends State<FeedScreen> {
                   if (!snapshot.hasData)
                     return Center(child: CircularProgressIndicator());
                   return ListView.builder(
-                      itemExtent: MediaQuery.of(context).size.height/1.6,
+                      itemExtent: MediaQuery.of(context).size.height/1.7,
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index) {
                         return Column(
                           children: <Widget>[
-                            SizedBox(height: MediaQuery.of(context).size.height/50),
+                            SizedBox(height: MediaQuery.of(context).size.height/100),
                             _buildPost(
                                 context, snapshot.data.documents[index]),
                           ],
@@ -79,7 +79,7 @@ class _FeedScreenState extends State<FeedScreen> {
   Widget _buildPost(BuildContext context, DocumentSnapshot document) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height/1.7 ,
+      height: MediaQuery.of(context).size.height/1.8 ,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
@@ -162,10 +162,10 @@ class _FeedScreenState extends State<FeedScreen> {
                   Text("${document['hashtags']}".replaceAll(']''', '').replaceAll('[', ""), style: TextStyle(color: Colors.blue,),)
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Wrap(
+                alignment: WrapAlignment.center,
                 children: <Widget>[
-                  Expanded(child: Center(child: Text("${document['description']}".replaceAll(']''', '').replaceAll('[', ""), style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),))),
+                  Center(child: Text("${document['description']}".replaceAll(']''', '').replaceAll('[', ""), maxLines: 3,style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),)),
                 ],
               ),
 
