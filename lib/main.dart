@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   static String email = '';
   static String password = '';
   static List<String> protectList = [];
+  static List<String> allProtectList = ["Covid-19","Amazon Rainforest","The Great Barrier Reef","Empty"];
 
 
   @override
