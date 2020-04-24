@@ -68,7 +68,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width/2.5,
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery.of(context).size.height/20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -99,7 +99,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width/2.5,
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery.of(context).size.height/20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -147,7 +147,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       underline: SizedBox(),
                       icon: SvgPicture.asset("./assets/icons/dropdown.svg"),
                       value: selectedCountry,
-                      items: ['USA', 'India', 'China', 'Canada', 'Russia']
+                      items: ['USA', 'India', 'China', 'Canada', 'Russia', 'France', 'Spain', 'Italy', 'Israel']
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
