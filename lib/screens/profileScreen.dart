@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:protect/models/User.dart';
 import 'package:protect/screens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
@@ -14,6 +15,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final _auth = FirebaseAuth.instance;
   String fullName = '';
+  int protectPoints = 0;
 
   @override
   void initState() {
@@ -38,7 +40,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final user = await _auth.currentUser();
     String uid = user.uid;
     DocumentSnapshot snapshot = await database.getUserDocumentSnapshot(uid);
-    fullName = snapshot.data['full_name'];
+    ProtectUser userInstance = ProtectUser.fromJSON(snapshot.data);
+    fullName = userInstance.fullName;
+    protectPoints = userInstance.protectPoints;
   }
 
   @override
@@ -129,9 +133,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.done) {
-                              return Text("${fullName}",
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 30.0));
+                              return Column(
+                                children: <Widget>[
+                                  Text(
+                                    "${fullName}",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30.0,
+                                    ),
+                                  ),
+                                  Text(
+                                    "${protectPoints} protect points",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30.0,
+                                    ),
+                                  ),
+                                ],
+                              );
                             } else {
                               return Center(child: CircularProgressIndicator());
                             }
