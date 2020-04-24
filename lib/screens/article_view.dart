@@ -18,7 +18,7 @@ class _ArticleViewState extends State<ArticleView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "COVID-19",
+          "Article",
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         centerTitle: true,

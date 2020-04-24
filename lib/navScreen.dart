@@ -1,10 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:protect/screens/feedScreen.dart';
-import 'package:protect/screens/messageScreen.dart';
-import 'package:protect/screens/profileScreen.dart';
-import 'package:protect/screens/protectCardScreen.dart';
+import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/navBarScreens/feedScreen.dart';
+import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/navBarScreens/messageScreen.dart';
+import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/navBarScreens/profileScreen.dart';
+import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/navBarScreens/protectCardScreen.dart';
 
 import 'main.dart';
 
