@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:protect/components/articleCard.dart';
 import 'package:protect/data/webScraper.dart' as scraper;
 import 'firstScreen.dart';
 import 'package:http/http.dart';
@@ -68,6 +69,25 @@ class _feedScreenState extends State<feedScreen>{
                     height: MediaQuery.of(context).size.height/20,
                   ),
 
+                  ArticleCard(
+                    articleTitle: "Dobervich drinks too much coffee!",
+                    articleDate: "March 11, 2020",
+                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
+                    articleInformation: "AP CS students cry in agony as FRQ problems ravage the land.",
+                    articleProtect: "Dobervich",
+                  ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/20,
+                  ),
+
+                  ArticleCard(
+                    articleTitle: "Aryan burns his Calc HW!",
+                    articleDate: "March 11, 2020",
+                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
+                    articleInformation: "AP BC students cry in agony as FRQ problems ravage the land.",
+                    articleProtect: "Calc BC",
+                  ),
                 ],
               ),
             ),
