@@ -28,11 +28,11 @@ class protectCard extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
             child: Container(
-              height: 200.0,
-              width: 200.0,
+              height: MediaQuery.of(context).size.height/2.5,
+              width: MediaQuery.of(context).size.width/2.2  ,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(30.0),
                 boxShadow: [
                   BoxShadow(
                       blurRadius: 6.0,
@@ -45,8 +45,7 @@ class protectCard extends StatelessWidget {
                   Container(
                     child: Image.asset(
                       imageFilePath,
-                      height: 150.0,
-                      fit: BoxFit.cover,
+                      height: MediaQuery.of(context).size.height/4,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
