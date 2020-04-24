@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:protect/constant.dart';
 import 'package:protect/components/my_header.dart';
@@ -17,6 +18,9 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
   String selectedCountry = 'USA';
   CountryModel selectedCountryData;
   bool _isloading = true;
+  PieChartData pieChartData = PieChartData(
+
+  );
 
   @override
   void initState() {
@@ -196,7 +200,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
 //                      ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: MediaQuery.of(context).size.height/20),
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
@@ -258,7 +262,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                           ],
                         ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: MediaQuery.of(context).size.height/20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -275,25 +279,34 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
 //                      ),
                     ],
                   ),
+
+                  SizedBox(height: MediaQuery.of(context).size.height/35),
+
                   Container(
-                    margin: EdgeInsets.only(top: 20),
-                    padding: EdgeInsets.all(20),
-                    height: 178,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 10),
-                          blurRadius: 30,
-                          color: kShadowColor,
+                    child: (_isloading) ? CircularProgressIndicator() : PieChart(
+                      PieChartData(
+                        sectionsSpace: 0,
+                        centerSpaceRadius: 0,
+                        borderData: FlBorderData(
+                          show: false,
                         ),
-                      ],
-                    ),
-                    child: Image.asset(
-                      "assets/images/map.png",
-                      fit: BoxFit.contain,
+                        sections: [
+                          PieChartSectionData(
+                            radius: 80,
+                            color: Colors.green,
+                            title: "Recovered",
+                            titleStyle: TextStyle(color: Colors.black),
+                            value: selectedCountryData.recovered.roundToDouble(),
+                          ),
+                          PieChartSectionData(
+                            radius: 80,
+                            color: Colors.blue,
+                            titleStyle: TextStyle(color: Colors.black),
+                            title: "Total Cases",
+                            value: selectedCountryData.totalCases.toDouble(),
+                          ),
+                        ]
+                      )
                     ),
                   ),
                   SizedBox(
