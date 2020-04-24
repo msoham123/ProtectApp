@@ -12,7 +12,7 @@ class ProtectScreen extends StatefulWidget {
 class _ProtectScreenState extends State<ProtectScreen>{
   final TextEditingController _searchControl = new TextEditingController();
   List<bool> selectedList = new List();
-  List<String> protectList = ["Covid-19","Amazon Rainforest","The Great Barrier Reef", ""];
+  List<String> protectList = MyApp.allProtectList;
 
   void populateSelectedList(){
     protectList.forEach((item) =>  selectedList.add(false));

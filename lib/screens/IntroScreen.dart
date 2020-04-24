@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intro_slider/intro_slider.dart' as slider;
 import 'package:intro_slider/slide_object.dart';
 import 'package:protect/navScreen.dart';
-import 'package:protect/screens/protectScreen.dart';
+import 'package:protect/screens/addProtectScreen.dart';
 
 
 
