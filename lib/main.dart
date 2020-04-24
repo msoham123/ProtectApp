@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.purple,
         ),
-        home: AuthWidget(),
+        home: FirstScreen(),
       ),
     );
   }
