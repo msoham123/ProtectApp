@@ -35,6 +35,10 @@ class _MessageScreenState extends State<MessageScreen> {
     getCurrentUser();
   }
 
+  String currentChat(){
+    return (chatRoom=="global_chat") ? "Global Chat" : (chatRoom=="coronavirus_chat") ? "Covid-19 Chat" : (chatRoom=="climate_change_chat") ? "Climate Change Chat" : (chatRoom=="amazon_rainforest_chat") ? "Amazon Rainforest Chat" : (chatRoom=="great_barrier_reef_chat") ? "Great Barrier Reef Chat" : null;
+  }
+
   void getCurrentUser() async {
     final _firestoreService = Provider.of<FirestoreService>(
         context, listen: false);
@@ -110,6 +114,15 @@ class _MessageScreenState extends State<MessageScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width/1.5,
+              color: Colors.deepPurple,
+              height: MediaQuery.of(context).size.height/25,
+              child: Center(
+                child: Text(currentChat(),
+                  style: TextStyle(color: Colors.white),),
+              ),
+            ),
             _loading
                 ? Center(child: CircularProgressIndicator())
                 : MessagesStream(),

@@ -40,6 +40,7 @@ class FlutterBluetooth with ChangeNotifier{
 
     //Check if Device is Online
     if(!isOnline){
+      _feed = "Device is not online";
       return null;
     }else{
       //Scan for Bluetooth Devices
