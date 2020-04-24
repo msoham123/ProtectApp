@@ -87,11 +87,40 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   },
                   child: Container(
                     padding:
-                        EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
+                    EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
                     margin: EdgeInsets.only(left: 30.0),
-                    child: Text(
-                      'Get more details',
-                      style: TextStyle(color: Colors.white),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          'Get more details',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(Icons.details,color: Colors.white, size: 18.0,),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: kRecovercolor,
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => InfoScreen()));
+                  },
+                  child: Container(
+                    padding:
+                    EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
+                    margin: EdgeInsets.only(left: 5.0),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          'Get news',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(Icons.short_text,color: Colors.white, size: 18.0,),
+                      ],
                     ),
                     decoration: BoxDecoration(
                       color: kRecovercolor,
