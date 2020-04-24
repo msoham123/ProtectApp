@@ -28,10 +28,19 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            MyHeader(
-              image: "./assets/icons/environment.svg",
-              textTop: "Protect the",
-              textBottom: "environment.",
+            Stack(
+              children: <Widget>[
+                MyHeader(
+                  image: "./assets/icons/environment.svg",
+                  textTop: "",
+                  textBottom: "",
+                ),
+                Positioned(
+                    left: MediaQuery.of(context).size.width/15,
+                    top: MediaQuery.of(context).size.height/15,
+                    child: Text("Protect the environment", style: TextStyle(color: Colors.white,fontSize: 23, fontWeight: FontWeight.w700))
+                ),
+              ],
             ),
 
             SizedBox(height: 10),
@@ -112,12 +121,12 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                         Counter(
                           color: kInfectedColor,
                           number: 1046,
-                          title: "Kilotons of \nIce Melted",
+                          title: "Kilotons of \nIce Melted\n",
                         ),
                         Counter(
                           color: kDeathColor,
                           number: 87,
-                          title: "Deaths",
+                          title: "Deaths\n\n",
                         ),
                         Counter(
                           color: kDeathColor,

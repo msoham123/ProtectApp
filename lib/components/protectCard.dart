@@ -28,7 +28,7 @@ class protectCard extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
             child: Container(
-              height: MediaQuery.of(context).size.height/2.5,
+              height: MediaQuery.of(context).size.height/2.6,
               width: MediaQuery.of(context).size.width/2.1  ,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -47,7 +47,7 @@ class protectCard extends StatelessWidget {
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
                       child: Image.asset(
                         imageFilePath,
-                        height: 150.0,
+                        height: MediaQuery.of(context).size.height/4.3,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -59,12 +59,12 @@ class protectCard extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(top: 5.0, left: 10.0),
-                        child: Text(protectTitle),
-                      )
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height/10,
+                        width: MediaQuery.of(context).size.width/32,
+                      ),
+                      Expanded(child: Text(protectTitle, style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 16),))
                     ],
                   )
                 ],
