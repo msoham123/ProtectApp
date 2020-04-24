@@ -33,9 +33,14 @@ class _ProtectCardScreenState extends State<ProtectCardScreen>{
               children: <Widget>[
                 SizedBox(height: MediaQuery.of(context).size.height/20),
 
-                Row(children: <Widget>[
-                  Text("Protect Information")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(width: MediaQuery.of(context).size.width/15),
+                    Text("Protect Information : ", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),)
                 ],),
+
+                SizedBox(height: MediaQuery.of(context).size.height/30),
 
                 Container(
                   height: 250.0,
