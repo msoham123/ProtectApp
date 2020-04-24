@@ -49,7 +49,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 30),
                 Container(
-                  height: MediaQuery.of(context).size.height/2.8,
+                  height: MediaQuery.of(context).size.height/2.5,
                   child: ListView(
                     primary: false,
                     padding: EdgeInsets.symmetric(
