@@ -15,15 +15,24 @@ class _MessageScreenState extends State<MessageScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: Text("My Messages", style: TextStyle(fontWeight: FontWeight.w700),),
         centerTitle: true,
+        title: Text("My Messages", style: TextStyle(fontWeight: FontWeight.w700),),
+        leading: IconButton(
+          icon: Icon(Icons.video_call),
+          color: Colors.white,
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => IndexPage()));
+          },
+        ),
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: false,
         actions: <Widget>[
+
           PopupMenuButton<int>(
             icon: Icon(Icons.arrow_drop_down, size: 35,),
             offset: Offset(0, 100),
             itemBuilder: (context) => [
+
               PopupMenuItem(
                 value: 1,
                 child: Text("Global Chat"),
@@ -41,21 +50,12 @@ class _MessageScreenState extends State<MessageScreen>{
         padding: EdgeInsets.fromLTRB(10.0,0,10.0,0),
         child: Column(
           children: <Widget>[
-
-
             Expanded(
               child: ListView(
                 shrinkWrap: true,
                 children: <Widget>[
                   SizedBox(height: 10.0),
 
-
-                  FlatButton(
-                    child: Text("VideoChat"),
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => IndexPage()));
-                    },
-                  )
 
 
 

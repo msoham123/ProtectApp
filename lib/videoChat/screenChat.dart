@@ -19,6 +19,7 @@ class _CallPageState extends State<CallPage> {
   final _infoStrings = <String>[];
   bool muted = false;
 
+
   @override
   void dispose() {
     // clear users
@@ -297,7 +298,9 @@ class _CallPageState extends State<CallPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agora Flutter QuickStart'),
+        title: Text('Video Chat: ${widget.channelName}'),
+        centerTitle: true,
+        backgroundColor: Colors.deepPurple,
       ),
       backgroundColor: Colors.black,
       body: Center(
