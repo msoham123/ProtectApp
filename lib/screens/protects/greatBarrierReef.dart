@@ -4,6 +4,7 @@ import 'package:protect/components/my_header.dart';
 import 'package:protect/components/counter.dart';
 import 'package:protect/screens/newsScreen.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
+import 'package:share/share.dart';
 
 class GreatBarrierReefScreen extends StatefulWidget {
   @override
@@ -16,6 +17,17 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
   double _paymentAmount = 0.0;
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
 
+  String text =
+      'Join Protect to learn more about the Great Barrier Reef and contrubute towards it.';
+  String subject = 'The Great Barrier Reef';
+
+  void _share(BuildContext context) {
+    final RenderBox box = context.findRenderObject();
+    Share.share(text,
+        subject: subject,
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +39,17 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: true,
-        actions: <Widget>[IconButton(icon: Icon(Icons.share,color: Colors.white,),onPressed: (){},)],
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.share,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              _share(context);
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -40,11 +62,12 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                   textBottom: "",
                 ),
                 Positioned(
-                  left: MediaQuery.of(context).size.width / 75  ,
+                  left: MediaQuery.of(context).size.width / 75,
                   top: MediaQuery.of(context).size.height / 9,
-                  child: Image.asset("assets/images/reef.png",
+                  child: Image.asset(
+                    "assets/images/reef.png",
                     fit: BoxFit.contain,
-                    width: MediaQuery.of(context).size.width /1.03,
+                    width: MediaQuery.of(context).size.width / 1.03,
                   ),
                 ),
                 Positioned(
@@ -58,7 +81,6 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                         fontWeight: FontWeight.w700),
                   ),
                 ),
-
               ],
             ),
             GestureDetector(
@@ -97,7 +119,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () async{
+                    onTap: () async {
                       _showDialog(context);
                     },
                     child: Container(
@@ -235,10 +257,8 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery.of(context).size.height / 15,
                   ),
-
-
                   Row(
                     children: <Widget>[
                       RichText(
@@ -273,9 +293,13 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -286,7 +310,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -298,7 +322,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery.of(context).size.height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -312,9 +336,13 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -325,7 +353,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -337,7 +365,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery.of(context).size.height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -351,9 +379,13 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -364,7 +396,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -375,9 +407,8 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                           )
                         ],
                       ),
-
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery.of(context).size.height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -391,9 +422,13 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.title, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.title,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -404,7 +439,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -415,13 +450,11 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                           )
                         ],
                       ),
-
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery.of(context).size.height / 15,
                   ),
-
                 ],
               ),
             ),
@@ -430,6 +463,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
       ),
     );
   }
+
   void _showDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -504,7 +538,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                   ),
                 );
                 BraintreeDropInResult result =
-                await BraintreeDropIn.start(request);
+                    await BraintreeDropIn.start(request);
                 if (result != null) {
                   showNonce(result.paymentMethodNonce);
                 }
@@ -515,6 +549,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
       },
     );
   }
+
   void showNonce(BraintreePaymentMethodNonce nonce) {
     showDialog(
       context: context,

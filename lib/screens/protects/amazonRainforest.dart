@@ -5,6 +5,7 @@ import 'package:protect/components/my_header.dart';
 import 'package:protect/components/counter.dart';
 import 'package:protect/screens/newsScreen.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
+import 'package:share/share.dart';
 
 class AmazonRainforestScreen extends StatefulWidget {
   @override
@@ -17,6 +18,18 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
   double _paymentAmount = 0.0;
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
 
+  String text = 'Join Protect to learn more about the Amazon Rainforest and contrubute towards it.';
+  String subject = 'Amazon Rainforest';
+
+  void _share(BuildContext context) {
+    final RenderBox box = context.findRenderObject();
+    Share.share(text,
+        subject: subject,
+        sharePositionOrigin:
+        box.localToGlobal(Offset.zero) &
+        box.size);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +41,12 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: true,
-        actions: <Widget>[IconButton(icon: Icon(Icons.share,color: Colors.white,),onPressed: (){},)],
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.share, color: Colors.white,), onPressed: () {
+            _share(context);
+          },)
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -41,8 +59,14 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                   textBottom: "",
                 ),
                 Positioned(
-                  left: MediaQuery.of(context).size.width / 15,
-                  top: MediaQuery.of(context).size.height / 15,
+                  left: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 15,
+                  top: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 15,
                   child: Text(
                     "Protect the largest \necosystem on the planet",
                     style: TextStyle(
@@ -52,12 +76,24 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                   ),
                 ),
                 Positioned(
-                  left: MediaQuery.of(context).size.width / 6.5,
-                  top: MediaQuery.of(context).size.height / 5,
+                  left: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 6.5,
+                  top: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 5,
                   child: SvgPicture.asset("assets/images/rainforest.svg",
                     fit: BoxFit.contain,
-                    height:MediaQuery.of(context).size.height / 5 ,
-                    width: MediaQuery.of(context).size.width / 5,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 5,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 5,
                   ),
                 ),
               ],
@@ -77,8 +113,14 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                     );
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width / 2.5,
-                    height: MediaQuery.of(context).size.height / 20,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 2.5,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -100,12 +142,18 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () async{
+                  onTap: () async {
                     _showDialog(context);
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width / 2.5,
-                    height: MediaQuery.of(context).size.height / 20,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 2.5,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -231,7 +279,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                   ),
 
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 15,
                   ),
 
 
@@ -271,7 +322,9 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border, color: Colors.white,
+                                size: 30,),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -282,7 +335,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -294,7 +350,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery
+                            .of(context)
+                            .size
+                            .height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -310,7 +369,9 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border, color: Colors.white,
+                                size: 30,),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -321,7 +382,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -333,7 +397,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery
+                            .of(context)
+                            .size
+                            .height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -349,7 +416,9 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border, color: Colors.white,
+                                size: 30,),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -360,7 +429,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -372,7 +444,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery
+                            .of(context)
+                            .size
+                            .height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -388,7 +463,8 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.title, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.title, color: Colors.white, size: 30,),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -399,7 +475,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -414,7 +493,10 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 15,
                   ),
 
                 ],
@@ -425,6 +507,7 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
       ),
     );
   }
+
   void _showDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -510,23 +593,25 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
       },
     );
   }
+
   void showNonce(BraintreePaymentMethodNonce nonce) {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        title: Text('Payment method nonce:'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text('Nonce: ${nonce.nonce}'),
-            SizedBox(height: 16),
-            Text('Type label: ${nonce.typeLabel}'),
-            SizedBox(height: 16),
-            Text('Description: ${nonce.description}'),
-          ],
-        ),
-      ),
+      builder: (_) =>
+          AlertDialog(
+            title: Text('Payment method nonce:'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text('Nonce: ${nonce.nonce}'),
+                SizedBox(height: 16),
+                Text('Type label: ${nonce.typeLabel}'),
+                SizedBox(height: 16),
+                Text('Description: ${nonce.description}'),
+              ],
+            ),
+          ),
     );
   }
 }

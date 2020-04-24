@@ -6,6 +6,7 @@ import 'package:protect/data/co2API.dart';
 import 'package:protect/models/co2_model.dart';
 import 'package:protect/screens/newsScreen.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
+import 'package:share/share.dart';
 
 class ClimateChangeScreen extends StatefulWidget {
   @override
@@ -19,6 +20,18 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
   bool _loading = true;
   CO2Model carbonEmissionData;
+
+  String text = 'Join Protect to learn more about Climate Change and contrubute towards it.';
+  String subject = 'Climate Change';
+
+  void _share(BuildContext context) {
+    final RenderBox box = context.findRenderObject();
+    Share.share(text,
+        subject: subject,
+        sharePositionOrigin:
+        box.localToGlobal(Offset.zero) &
+        box.size);
+  }
 
   @override
   void initState() {
@@ -46,7 +59,7 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: true,
-        actions: <Widget>[IconButton(icon: Icon(Icons.share,color: Colors.white,),onPressed: (){},)],
+        actions: <Widget>[IconButton(icon: Icon(Icons.share,color: Colors.white,),onPressed: (){_share(context);},)],
       ),
       body: SingleChildScrollView(
         child: Column(

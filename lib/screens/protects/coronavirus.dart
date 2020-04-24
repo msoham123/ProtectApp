@@ -10,6 +10,7 @@ import 'package:protect/screens/protects/corona_info_screen.dart';
 import 'package:protect/models/covid_country_model.dart';
 import 'package:protect/screens/protects/covid_map.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
+import 'package:share/share.dart';
 
 class CoronavirusScreen extends StatefulWidget {
   @override
@@ -24,6 +25,8 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
   TextEditingController paymentController = new TextEditingController();
   double _paymentAmount = 0.0;
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
+  String text = 'Join Protect to learn more about COVID-19 and contrubute towards it.';
+  String subject = 'COVID-19';
 
   @override
   void initState() {
@@ -61,6 +64,15 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
     );
   }
 
+  void _share(BuildContext context) {
+    final RenderBox box = context.findRenderObject();
+    Share.share(text,
+        subject: subject,
+        sharePositionOrigin:
+        box.localToGlobal(Offset.zero) &
+        box.size);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +84,17 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: true,
-        actions: <Widget>[IconButton(icon: Icon(Icons.share,color: Colors.white,),onPressed: (){},)],
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.share,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              _share(context);
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -185,7 +207,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () async{
+                  onTap: () async {
                     _showDialog(context);
                   },
                   child: Container(
@@ -431,7 +453,11 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.healing, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.healing,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -445,12 +471,9 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       )
                     ],
                   ),
-
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery.of(context).size.height / 15,
                   ),
-
-
                   Row(
                     children: <Widget>[
                       RichText(
@@ -485,9 +508,13 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -498,7 +525,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -510,7 +537,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery.of(context).size.height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -524,9 +551,13 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -537,7 +568,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -549,7 +580,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery.of(context).size.height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -563,9 +594,13 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.star_border, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.star_border,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -576,7 +611,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -588,7 +623,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/65,
+                        height: MediaQuery.of(context).size.height / 65,
                       ),
                       Row(
                         children: <Widget>[
@@ -602,9 +637,13 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.deepPurple,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                              child: Icon(Icons.title, color: Colors.white, size: 30,),
+                              child: Icon(
+                                Icons.title,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -615,7 +654,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/10,
+                            width: MediaQuery.of(context).size.width / 10,
                           ),
                           Flexible(
                             child: Text(
@@ -626,14 +665,11 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                           )
                         ],
                       ),
-
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/15,
+                    height: MediaQuery.of(context).size.height / 15,
                   ),
-
-
                 ],
               ),
             ),
@@ -717,7 +753,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   ),
                 );
                 BraintreeDropInResult result =
-                await BraintreeDropIn.start(request);
+                    await BraintreeDropIn.start(request);
                 if (result != null) {
                   showNonce(result.paymentMethodNonce);
                 }
