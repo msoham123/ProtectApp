@@ -35,7 +35,7 @@ class _NewsScreenState extends State<NewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.deepPurple,
         centerTitle: true,
         title: Text('ProtectNews'),
         automaticallyImplyLeading: true,
