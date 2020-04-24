@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'firstScreen.dart';
 
 
-class messageScreen extends StatefulWidget {
+class MessageScreen extends StatefulWidget {
   @override
-  _messageScreenState createState() => _messageScreenState();
+  _MessageScreenState createState() => _MessageScreenState();
 }
 
-class _messageScreenState extends State<messageScreen>{
+class _MessageScreenState extends State<MessageScreen>{
   final TextEditingController _searchControl = new TextEditingController();
 
 
