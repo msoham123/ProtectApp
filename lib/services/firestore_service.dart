@@ -17,4 +17,9 @@ class FirestoreService {
   Future<DocumentSnapshot> getUserDocumentSnapshot(String uid) async {
     return await users.document(uid).get();
   }
+
+  Future<String> getUserName(String uid) async {
+    DocumentSnapshot ds = await getUserDocumentSnapshot(uid);
+    return ds.data['full_name'];
+  }
 }
