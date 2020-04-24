@@ -36,6 +36,7 @@ dependencies:
   permission_handler:
   agora_rtc_engine:
   webview_flutter: ^0.3.19+9
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:
