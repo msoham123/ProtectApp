@@ -424,7 +424,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                             onTap: () {
                               print('Check for People Around You');
                               Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
-                            },
+                            },  
                             child: Container(
                               height: 50.0,
                               width: 50.0,
