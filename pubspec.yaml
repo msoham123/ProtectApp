@@ -39,6 +39,7 @@ dependencies:
   intl: ^0.16.1
   fl_chart:
   flutter_braintree: ^0.6.0
+  fancy_on_boarding:
 
 dev_dependencies:
   flutter_test:
