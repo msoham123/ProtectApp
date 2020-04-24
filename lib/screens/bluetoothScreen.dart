@@ -172,18 +172,18 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                   'Connect',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () {
-                  setState(() async {
-                    flutterBlue.stopScan();
-                    try {
-                      await device.connect();
-                    } catch (e) {
-                      if (e.code != 'already_connected') {
-                        throw e;
-                      }
-                    } finally {
-                      _services = await device.discoverServices();
+                onPressed: () async {
+                  flutterBlue.stopScan();
+                  try {
+                    await device.connect();
+                  } catch (e) {
+                    if (e.code != 'already_connected') {
+                      throw e;
                     }
+                  } finally {
+                    _services = await device.discoverServices();
+                  }
+                  setState(() {
                     _connectedDevice = device;
                   });
                 },
