@@ -19,7 +19,7 @@ class protectCard extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.5 : MediaQuery.of(context).size.height/3.5,
+          height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.8 : MediaQuery.of(context).size.height/3.5,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(30.0),
