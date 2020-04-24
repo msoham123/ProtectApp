@@ -10,6 +10,7 @@ import 'package:protect/screens/protects/corona_info_screen.dart';
 import 'package:protect/models/covid_country_model.dart';
 import 'package:protect/screens/protects/covid_map.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
+import 'package:protect/screens/bluetoothScreen.dart';
 
 class CoronavirusScreen extends StatefulWidget {
   @override
@@ -421,7 +422,8 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         children: <Widget>[
                           GestureDetector(
                             onTap: () {
-                              print('Get Tested');
+                              print('Check for People Around You');
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
                             },
                             child: Container(
                               height: 50.0,
@@ -430,6 +432,36 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                                 color: Colors.blue,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                              child: Icon(Icons.bluetooth, color: Colors.white, size: 30,),
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Flexible(
+                            child: Text(
+                              'Do you want to make sure you are away from people? Check for people now!',
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height/65,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              print('Get Tested Now');
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
+                            },
+                            child: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
                               ),
                               child: Icon(Icons.healing, color: Colors.white, size: 30,),
                             ),
@@ -449,7 +481,6 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height/15,
                   ),
-
 
                   Row(
                     children: <Widget>[
