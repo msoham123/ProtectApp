@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>950579397341-r47pgde9v0genhg8pp5ulkpvn05hqgmb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.950579397341-r47pgde9v0genhg8pp5ulkpvn05hqgmb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD5PNmfDiHVP96wMESq1Zmzmp_bVDR3RGk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>950579397341</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ml.aryanvichare.protect</string>
+	<key>PROJECT_ID</key>
+	<string>protect-a12be</string>
+	<key>STORAGE_BUCKET</key>
+	<string>protect-a12be.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:950579397341:ios:9c2c4649bceeb626815134</string>
+	<key>DATABASE_URL</key>
+	<string>https://protect-a12be.firebaseio.com</string>
+</dict>
+</plist>
