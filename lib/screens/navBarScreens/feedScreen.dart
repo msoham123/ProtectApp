@@ -65,7 +65,7 @@ class _FeedScreenState extends State<FeedScreen> {
   Widget _buildPost(int index) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height / 1.7  ,
+      height: MediaQuery.of(context).size.height / 2 ,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
@@ -117,7 +117,7 @@ class _FeedScreenState extends State<FeedScreen> {
                 child: Container(
                   margin: EdgeInsets.all(10.0),
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height / 2.5,
+                  height: MediaQuery.of(context).size.height / 3.5,
                   decoration: BoxDecoration(
 //                    color: Colors.black12,
                     borderRadius: BorderRadius.circular(25.0),
@@ -134,6 +134,18 @@ class _FeedScreenState extends State<FeedScreen> {
                     ),
                   ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("#Protect #DavidDobervich", style: TextStyle(color: Colors.blue,),)
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Flexible(child: Text("Description", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),)),
+                ],
               ),
             ],
           ),
