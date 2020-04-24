@@ -1,5 +1,6 @@
 import 'package:protect/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Counter extends StatelessWidget {
   final int number;
@@ -11,6 +12,7 @@ class Counter extends StatelessWidget {
     this.color,
     this.title,
   }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class Counter extends StatelessWidget {
         ),
         SizedBox(height: 10),
         Text(
-          "$number",
+          "${NumberFormat("#,###").format(number)}",
           style: TextStyle(
             fontSize: 30,
             color: color,
