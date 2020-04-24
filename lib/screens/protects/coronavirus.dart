@@ -260,13 +260,6 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ),
                       ),
                       Spacer(),
-//                      Text(
-//                        "See details",
-//                        style: TextStyle(
-//                          color: kPrimaryColor,
-//                          fontWeight: FontWeight.w600,
-//                        ),
-//                      ),
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height / 20),
@@ -341,16 +334,8 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         "Spread of Virus",
                         style: kTitleTextstyle,
                       ),
-//                      Text(
-//                        "See details",
-//                        style: TextStyle(
-//                          color: kPrimaryColor,
-//                          fontWeight: FontWeight.w600,
-//                        ),
-//                      ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
                   Container(
                     child: (_isloading)
                         ? CircularProgressIndicator()
@@ -385,6 +370,56 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   SizedBox(
                     height: 10.0,
                   ),
+                  Row(
+                    children: <Widget>[
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Tools\n",
+                              style: kTitleTextstyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              print('Get Tested');
+                            },
+                            child: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                              child: Icon(Icons.healing, color: Colors.white, size: 30,),
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Flexible(
+                            child: Text(
+                              'Are you at risk of getting COVID-19?\nGet checked now!',
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 50.0,
+                  ),
                   Container(
                     margin: EdgeInsets.only(bottom: 50.0),
                     width: MediaQuery.of(context).size.width / 1.5,
@@ -414,7 +449,6 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
   }
 
   void _showDialog(BuildContext context) {
-    // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
