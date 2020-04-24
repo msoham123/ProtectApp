@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protect/components/newsApi.dart';
 
 import 'firstScreen.dart';
 
@@ -32,9 +33,12 @@ class _feedScreenState extends State<feedScreen>{
                 children: <Widget>[
                   SizedBox(height: 10.0),
 
-                  Container(
-                    color: Colors.orange,
-                    height: MediaQuery.of(context).size.height*1.5,
+                  FlatButton(
+                    child: Text("Get News"),
+                    onPressed: (){
+                      News data = new News();
+                      data.displayNews();
+                    },
                   )
 
                 ],
