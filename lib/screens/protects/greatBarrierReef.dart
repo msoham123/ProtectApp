@@ -41,10 +41,12 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                 Positioned(
                   left: MediaQuery.of(context).size.width / 69,
                   top: MediaQuery.of(context).size.height / 9,
-                  child: Image.asset("assets/images/reef.png",
-                    fit: BoxFit.contain,
-//                    height:MediaQuery.of(context).size.height/1 ,
-                    width: MediaQuery.of(context).size.width /1.03,
+                  child: Card(
+                    elevation: 20.0,
+                    child: Image.asset("assets/images/reef.png",
+                      fit: BoxFit.contain,
+                      width: MediaQuery.of(context).size.width /1.03,
+                    ),
                   ),
                 ),
                 Positioned(
