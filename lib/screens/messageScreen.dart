@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'firstScreen.dart';
-
-
 class MessageScreen extends StatefulWidget {
   @override
   _MessageScreenState createState() => _MessageScreenState();
@@ -10,8 +7,6 @@ class MessageScreen extends StatefulWidget {
 
 class _MessageScreenState extends State<MessageScreen>{
   final TextEditingController _searchControl = new TextEditingController();
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +17,7 @@ class _MessageScreenState extends State<MessageScreen>{
         automaticallyImplyLeading: false,
         actions: <Widget>[],
       ),
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(10.0,0,10.0,0),
         child: Column(
@@ -32,10 +27,10 @@ class _MessageScreenState extends State<MessageScreen>{
                 children: <Widget>[
                   SizedBox(height: 10.0),
 
-                  Container(
-                    color: Colors.blue,
-                    height: MediaQuery.of(context).size.height*1.5,
-                  )
+//                  Container(
+//                    color: Colors.blue,
+//                    height: MediaQuery.of(context).size.height*1.5,
+//                  )
 
                 ],
               ),
