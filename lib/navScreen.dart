@@ -86,7 +86,7 @@ class _NavScreenState extends State<NavScreen> {
 //            MainScreen(), list of screens here
 //            MapScreen(),
 //            myChatBotScreen(),
-            feedScreen(),
+            FeedScreen(),
             MessageScreen(),
             ProfileScreen(),
           ],
