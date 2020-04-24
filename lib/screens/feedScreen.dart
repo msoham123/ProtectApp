@@ -23,7 +23,7 @@ class _FeedScreenState extends State<FeedScreen>{
         automaticallyImplyLeading: false,
         actions: <Widget>[],
       ),
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(10.0,0,10.0,0),
         child: Column(
