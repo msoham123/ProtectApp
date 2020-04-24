@@ -35,16 +35,20 @@ class _FirstScreenState extends State<FirstScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    FadeAnimation(2.6,Text("Protect", style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold
-                    ))),
-                     FadeAnimation(2.4,Text("Protect your future!.", style: TextStyle(
-                         color: Colors.white,
-                         fontSize: 22,
-                         letterSpacing: 2
-                     ))),
+                    Center(
+                      child: FadeAnimation(2.6,Text("Protect", style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold
+                      ))),
+                    ),
+                     Center(
+                       child: FadeAnimation(2.4,Text("Protect your future!", style: TextStyle(
+                           color: Colors.white,
+                           fontSize: 22,
+                           letterSpacing: 2
+                       ))),
+                     ),
                   ],
                 ),
 
@@ -67,13 +71,6 @@ class _FirstScreenState extends State<FirstScreen> {
                       child: LoginScreen(),
                     )),
                     SizedBox(height: 30),
-                    FadeAnimation(3.4,CustomButtonAnimation(
-                      label : "Empty Button",
-                      backbround: Colors.transparent,
-                      borderColor: Colors.transparent,
-                      fontColor : Colors.white,
-//                      child: FirstScreenDoctor(),
-                    ))
                   ],
                 )
               ],
