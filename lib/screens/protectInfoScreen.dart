@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:protect/navScreen.dart';
 
-import '../main.dart';
 
 class ProtectInformationScreen extends StatefulWidget {
   String protectTitle;
