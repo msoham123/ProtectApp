@@ -30,6 +30,7 @@ class _ArticleViewState extends State<ArticleView> {
         width: MediaQuery.of(context).size.width,
         child: WebView(
           initialUrl: widget.blogURL,
+          javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: ((WebViewController webViewController){
             _completer.complete(webViewController);
           }),
