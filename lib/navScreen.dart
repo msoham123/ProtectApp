@@ -2,10 +2,12 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:protect/screens/addProtectScreen.dart';
 import 'package:protect/screens/feedScreen.dart';
 import 'package:protect/screens/firstScreen.dart';
 import 'package:protect/screens/messageScreen.dart';
 import 'package:protect/screens/profileScreen.dart';
+import 'package:protect/screens/protectCardScreen.dart';
 
 import 'main.dart';
 
@@ -88,6 +90,7 @@ class _NavScreenState extends State<NavScreen> {
 //            myChatBotScreen(),
             FeedScreen(),
             MessageScreen(),
+            ProtectCardScreen(),
             ProfileScreen(),
           ],
         ),
@@ -135,6 +138,7 @@ class _NavScreenState extends State<NavScreen> {
         items: <Widget>[
           Icon(Icons.dashboard, size: 30, color: Colors.white,),
           Icon(Icons.forum, size: 30, color: Colors.white,),
+          Icon(Icons.live_help, size: 30, color: Colors.white,),
           Icon(Icons.person, size: 30, color: Colors.white,),
         ],
         onTap: (index) {

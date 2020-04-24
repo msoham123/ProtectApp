@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protect/auth_widget.dart';
-import 'package:protect/screens/protectScreen.dart';
+import 'package:protect/screens/addProtectScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:protect/services/firestore_service.dart';
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   static String email = '';
   static String password = '';
   static List<String> protectList = [];
+  static List<String> allProtectList = ["Covid-19","Amazon Rainforest","The Great Barrier Reef","Empty"];
 
 
   @override
