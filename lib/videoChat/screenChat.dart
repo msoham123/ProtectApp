@@ -298,6 +298,7 @@ class _CallPageState extends State<CallPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Video Chat: ${widget.channelName}'),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
