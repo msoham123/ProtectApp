@@ -141,7 +141,12 @@ class _NavScreenState extends State<NavScreen> {
           setState(() {
             MyApp.currentIndex = index;
           });
-          pageController.jumpToPage(index);
+//          pageController.jumpToPage(index);
+          pageController.animateToPage(
+            index,
+            duration: Duration(milliseconds: 300),
+            curve: Curves.linear,
+          );
         },
       ),
     );
