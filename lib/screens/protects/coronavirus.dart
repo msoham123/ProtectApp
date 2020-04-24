@@ -447,7 +447,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                             onTap: () {
                               print('Check for People Around You');
                               Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
-                            },
+                            },  
                             child: Container(
                               height: 50.0,
                               width: 50.0,
@@ -714,40 +714,42 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Confirmation"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              SizedBox(height: 5.0),
-              Text(
-                  "Thank you for doing the noble cause. Your contributions are greatly appreciated."),
-              SizedBox(height: 10.0),
-              Form(
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      validator: (val) {
-                        if (val.isEmpty) {
-                          return "Please enter some text";
-                        }
-                        return null;
-                      },
-                      controller: paymentController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.card_giftcard),
-                        labelText: "Donation amount",
-                        hintText: "ex: 5.00",
-                        border: OutlineInputBorder(),
+          content: SingleChildScrollView  (
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(height: 5.0),
+                Text(
+                    "Thank you for doing the noble cause. Your contributions are greatly appreciated."),
+                SizedBox(height: 10.0),
+                Form(
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return "Please enter some text";
+                          }
+                          return null;
+                        },
+                        controller: paymentController,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.card_giftcard),
+                          labelText: "Donation amount",
+                          hintText: "ex: 5.00",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (val) {
+                          _paymentAmount = double.parse(val);
+                          print(_paymentAmount);
+                        },
                       ),
-                      onChanged: (val) {
-                        _paymentAmount = double.parse(val);
-                        print(_paymentAmount);
-                      },
-                    ),
-                  ],
-                ),
-              )
-            ],
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
           actions: <Widget>[
             RaisedButton(
