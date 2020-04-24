@@ -61,6 +61,7 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -118,13 +119,6 @@ class _AmazonRainforestScreenState extends State<AmazonRainforestScreen> {
                         ),
                       ),
                       Spacer(),
-//                      Text(
-//                        "See details",
-//                        style: TextStyle(
-//                          color: kPrimaryColor,
-//                          fontWeight: FontWeight.w600,
-//                        ),
-//                      ),
                     ],
                   ),
                   SizedBox(height: 20),
