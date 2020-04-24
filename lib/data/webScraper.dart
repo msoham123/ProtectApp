@@ -1,7 +1,7 @@
 import 'dart:convert'; // Contains the JSON encoder
 
 import 'package:http/http.dart'; // Contains a client for making API calls
-import 'package:html/parser.dart'; // Contains HTML parsers to generate a Document object
+import 'package:html/parser.dart' as parser; // Contains HTML parsers to generate a Document object
 import 'package:html/dom.dart'; // Contains DOM related classes for extracting data from elements
 
 
@@ -14,7 +14,7 @@ Future initiate(BaseClient client) async {
   print(response.body);
 
   // Use html parser and query selector
-  var document = parse(response.body);
+  var document = parser.parse(response.body);
   List<Element> links = document.querySelectorAll('td.title > a.storylink');
 
   //traverse the collection
@@ -30,3 +30,4 @@ Future initiate(BaseClient client) async {
   return json.encode(linkMap);
 
 }
+
