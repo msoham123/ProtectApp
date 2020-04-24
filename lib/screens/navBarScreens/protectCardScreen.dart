@@ -39,7 +39,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
               children: <Widget>[
                 SizedBox(height: MediaQuery.of(context).size.height / 20),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(width: MediaQuery.of(context).size.width / 15),
                     Text(
@@ -103,7 +103,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 20),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(width: MediaQuery.of(context).size.width / 15),
                     Text(
