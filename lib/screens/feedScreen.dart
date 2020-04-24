@@ -51,7 +51,7 @@ class _feedScreenState extends State<feedScreen>{
                         child: Text("Clean Output", style: TextStyle(color: Colors.white),),
                         onPressed: () {
                           setState(() {
-                            response = "This is where the response is stored";
+                            response = "This is where the response will be stored";
                           });
                         },
                       ),
@@ -62,7 +62,7 @@ class _feedScreenState extends State<feedScreen>{
                     height: MediaQuery.of(context).size.height/20,
                   ),
 
-                  Text(response, style: TextStyle(color: Colors.white),),
+                  Center(child: Text(response, style: TextStyle(color: Colors.white),)),
 
                   SizedBox(
                     height: MediaQuery.of(context).size.height/20,
