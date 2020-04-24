@@ -12,16 +12,19 @@ class News {
 
   Future<List<ArticleModel>> fetchNews(String query) async {
     var response =
-    await http.get('${_baseURL}/v2/everything?${query}&apiKey=${key}');
+    await http.get('${_baseURL}/v2/everything?q=${query}&apiKey=${key}');
     var jsonData = jsonDecode(response.body);
 
     if (jsonData['status'] == successStatus) {
+      print(jsonData['articles']);
       jsonData['articles'].forEach((element) {
         if (element['urlToImage'] != null && element['description'] != null) {
           ArticleModel articleModel = new ArticleModel(
               author: element['author'],
               source: element['source']['name'],
               title: element['title'],
+              description: element['description'],
+              publishedAt: element['publishedAt'],
               url: element['url'],
               urlToImage: element['urlToImage'],
               content: element['content']);
