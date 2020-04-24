@@ -11,7 +11,6 @@ class ProtectCardScreen extends StatefulWidget {
 }
 
 class _ProtectCardScreenState extends State<ProtectCardScreen>{
-  final TextEditingController _searchControl = new TextEditingController();
 
   bool selected = false;
   @override
@@ -43,7 +42,7 @@ class _ProtectCardScreenState extends State<ProtectCardScreen>{
                 SizedBox(height: MediaQuery.of(context).size.height/30),
 
                 Container(
-                  height: MediaQuery.of(context).size.height/2.1,
+                  height: MediaQuery.of(context).size.height/2.4,
                   child: ListView(
                     primary: false,
                     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/30),
