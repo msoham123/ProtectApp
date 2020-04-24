@@ -23,7 +23,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.deepPurple,
         automaticallyImplyLeading: true,
       ),
       body: SingleChildScrollView(
@@ -32,7 +32,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
             MyHeader(
               image: "./assets/icons/Drcorona.svg",
               textTop: "All you need",
-              textBottom: "is to stay at home.",
+              textBottom: "is to stay at\nhome.",
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
