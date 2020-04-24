@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:protect/main.dart';
 import 'package:protect/models/ProtectUser.dart';
-import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/login+signupScreens/firstScreen.dart';
+import 'package:protect/screens/login+signupScreens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:protect/services/firestore_service.dart';

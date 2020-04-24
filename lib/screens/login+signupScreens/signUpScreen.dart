@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:protect/animations/fadeAnimation.dart';
-import 'file:///C:/Users/msoha/Desktop/flutter_applications/protect/lib/screens/login+signupScreens/IntroScreen.dart';
+import 'package:protect/screens/login+signupScreens/IntroScreen.dart';
 import 'package:protect/services/firestore_service.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:provider/provider.dart';
-import 'package:protect/navScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

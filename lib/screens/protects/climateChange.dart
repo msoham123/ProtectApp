@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:protect/constant.dart';
 import 'package:protect/components/my_header.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:protect/components/counter.dart';
-import 'package:protect/screens/protects/corona_info_screen.dart';
+import 'package:protect/screens/newsScreen.dart';
 
 class ClimateChangeScreen extends StatefulWidget {
   @override
@@ -36,38 +35,51 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                   textBottom: "",
                 ),
                 Positioned(
-                    left: MediaQuery.of(context).size.width/15,
-                    top: MediaQuery.of(context).size.height/15,
-                    child: Text("Protect the environment", style: TextStyle(color: Colors.white,fontSize: 23, fontWeight: FontWeight.w700))
+                  left: MediaQuery.of(context).size.width / 15,
+                  top: MediaQuery.of(context).size.height / 15,
+                  child: Text(
+                    "Protect the environment",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w700),
+                  ),
                 ),
               ],
             ),
-
-            SizedBox(height: 10),
-  //            Row(
-  //              mainAxisAlignment: MainAxisAlignment.start,
-  //              children: <Widget>[
-  //                GestureDetector(
-  //                  onTap: () {
-  //                    Navigator.push(context,
-  //                        MaterialPageRoute(builder: (context) => InfoScreen()));
-  //                  },
-  //                  child: Container(
-  //                    padding:
-  //                        EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
-  //                    margin: EdgeInsets.only(left: 30.0),
-  //                    child: Text(
-  //                      'Get more details',
-  //                      style: TextStyle(color: Colors.white),
-  //                    ),
-  //                    decoration: BoxDecoration(
-  //                      color: kRecovercolor,
-  //                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
-  //                    ),
-  //                  ),
-  //                ),
-  //              ],
-  //            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        NewsScreen(searchQuery: "climate change"),
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2.5,
+                height: MediaQuery.of(context).size.height / 20,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Get news',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.short_text,
+                      color: Colors.white,
+                      size: 18.0,
+                    ),
+                  ],
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurpleAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -176,9 +188,8 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                       fit: BoxFit.contain,
                     ),
                   ),
-
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/10,
+                    height: MediaQuery.of(context).size.height / 10,
                   ),
                 ],
               ),

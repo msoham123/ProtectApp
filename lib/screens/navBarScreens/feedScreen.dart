@@ -35,63 +35,7 @@ class _FeedScreenState extends State<FeedScreen>{
               child: ListView(
                 children: <Widget>[
                   SizedBox(height: 10.0),
-
                   _buildPost(0),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      FlatButton(
-                        color: Colors.green,
-                        child: Text("Scrape Web", style: TextStyle(color: Colors.white),),
-                        onPressed: () async {
-                          response = await scraper.initiate(Client());
-                          setState(() {
-                            response = response;
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        color: Colors.blue,
-                        child: Text("Clean Output", style: TextStyle(color: Colors.white),),
-                        onPressed: () {
-                          setState(() {
-                            response = "This is where the response will be stored";
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height/20,
-                  ),
-
-                  Center(child: Text(response, style: TextStyle(color: Colors.black),)),
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height/20,
-                  ),
-
-                  ArticleCard(
-                    articleTitle: "Dobervich drinks too much coffee!",
-                    articleDate: "March 11, 2020",
-                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
-                    articleInformation: "AP CS students cry in agony as FRQ problems ravage the land.",
-                    articleProtect: "Dobervich",
-                  ),
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height/20,
-                  ),
-
-                  ArticleCard(
-                    articleTitle: "Aryan burns his Calc HW!",
-                    articleDate: "March 11, 2020",
-                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
-                    articleInformation: "AP BC students cry in agony as FRQ problems ravage the land.",
-                    articleProtect: "Calc BC",
-                  ),
                 ],
               ),
             ),
@@ -188,65 +132,6 @@ class _FeedScreenState extends State<FeedScreen>{
                       ),
                     ),
                   ),
-////                  Padding(
-////                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-////                    child: Row(
-////                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-////                      children: <Widget>[
-////                        Row(
-////                          children: <Widget>[
-////                            Row(
-////                              children: <Widget>[
-////                                IconButton(
-////                                  icon: Icon(Icons.favorite_border),
-////                                  iconSize: 30.0,
-////                                  onPressed: () => print('Like post'),
-////                                ),
-////                                Text(
-////                                  '2,515',
-////                                  style: TextStyle(
-////                                    fontSize: 14.0,
-////                                    fontWeight: FontWeight.w600,
-////                                  ),
-////                                ),
-////                              ],
-////                            ),
-////                            SizedBox(width: 20.0),
-////                            Row(
-////                              children: <Widget>[
-////                                IconButton(
-////                                  icon: Icon(Icons.chat),
-////                                  iconSize: 30.0,
-////                                  onPressed: () {
-//////                                    Navigator.push(
-//////                                      context,
-//////                                      MaterialPageRoute(
-//////                                        builder: (_) => ViewPostScreen(
-//////                                          post: posts[index],
-//////                                        ),
-//////                                      ),
-//////                                    );
-////                                  },
-////                                ),
-////                                Text(
-////                                  '350',
-////                                  style: TextStyle(
-////                                    fontSize: 14.0,
-////                                    fontWeight: FontWeight.w600,
-////                                  ),
-////                                ),
-////                              ],
-////                            ),
-////                          ],
-////                        ),
-////                        IconButton(
-////                          icon: Icon(Icons.bookmark_border),
-////                          iconSize: 30.0,
-////                          onPressed: () => print('Save post'),
-////                        ),
-//                      ],
-//                    ),
-//                  ),
                 ],
               ),
             ),
@@ -255,5 +140,60 @@ class _FeedScreenState extends State<FeedScreen>{
       ),
     );
   }
-
 }
+
+//                  Row(
+//                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                    children: <Widget>[
+//                      FlatButton(
+//                        color: Colors.green,
+//                        child: Text("Scrape Web", style: TextStyle(color: Colors.white),),
+//                        onPressed: () async {
+//                          response = await scraper.initiate(Client());
+//                          setState(() {
+//                            response = response;
+//                          });
+//                        },
+//                      ),
+//                      FlatButton(
+//                        color: Colors.blue,
+//                        child: Text("Clean Output", style: TextStyle(color: Colors.white),),
+//                        onPressed: () {
+//                          setState(() {
+//                            response = "This is where the response will be stored";
+//                          });
+//                        },
+//                      ),
+//                    ],
+//                  ),
+/*
+SizedBox(
+                    height: MediaQuery.of(context).size.height/20,
+                  ),
+
+                  Center(child: Text(response, style: TextStyle(color: Colors.black),)),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/20,
+                  ),
+
+                  ArticleCard(
+                    articleTitle: "Dobervich drinks too much coffee!",
+                    articleDate: "March 11, 2020",
+                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
+                    articleInformation: "AP CS students cry in agony as FRQ problems ravage the land.",
+                    articleProtect: "Dobervich",
+                  ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/20,
+                  ),
+
+                  ArticleCard(
+                    articleTitle: "Aryan burns his Calc HW!",
+                    articleDate: "March 11, 2020",
+                    articleImage: Image.asset("assets/images/signupImage.png", fit: BoxFit.cover,),
+                    articleInformation: "AP BC students cry in agony as FRQ problems ravage the land.",
+                    articleProtect: "Calc BC",
+                  ),
+ */

@@ -32,7 +32,6 @@ class _MessageScreenState extends State<MessageScreen>{
             icon: Icon(Icons.arrow_drop_down, size: 35,),
             offset: Offset(0, 100),
             itemBuilder: (context) => [
-
               PopupMenuItem(
                 value: 1,
                 child: Text("Global Chat"),
@@ -57,12 +56,11 @@ class _MessageScreenState extends State<MessageScreen>{
                   SizedBox(height: 10.0),
 
 
+//                  Container(
+//                    color: Colors.blue,
+//                    height: MediaQuery.of(context).size.height*1.5,
+//                  )
 
-
-                  Container(
-                    color: Colors.blue,
-                    height: MediaQuery.of(context).size.height*1.5,
-                  )
 
                 ],
               ),
@@ -72,10 +70,5 @@ class _MessageScreenState extends State<MessageScreen>{
         ),
       ),
     );
-
   }
-
-
-
-
 }
