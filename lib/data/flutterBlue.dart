@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
+import 'package:flutter_blue/flutter_blue.dart' as blue;
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:flutter_scan_bluetooth/flutter_scan_bluetooth.dart';
 import 'package:wifi_info_plugin/wifi_info_plugin.dart';
 
 class FlutterBluetooth with ChangeNotifier{
   //General
-  FlutterBlue flutterBlue = FlutterBlue.instance;
+  blue.FlutterBlue flutterBlue = blue.FlutterBlue.instance;
   bool isOnline;
 
   //Local:
@@ -40,7 +40,7 @@ class FlutterBluetooth with ChangeNotifier{
 
     //Check if Device is Online
     if(!isOnline){
-      _feed = "Device is not online";
+      _feed = "Device is not online. Try turning on bluetooth?";
       return null;
     }else{
       //Scan for Bluetooth Devices
@@ -64,6 +64,6 @@ class FlutterBluetooth with ChangeNotifier{
   }
 
 
-
-
 }
+
+

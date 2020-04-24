@@ -40,7 +40,7 @@ class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
                   textBottom: "",
                 ),
                 Positioned(
-                  left: MediaQuery.of(context).size.width / 75,
+                  left: MediaQuery.of(context).size.width / 75  ,
                   top: MediaQuery.of(context).size.height / 9,
                   child: Image.asset("assets/images/reef.png",
                     fit: BoxFit.contain,

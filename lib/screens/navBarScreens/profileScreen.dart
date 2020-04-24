@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:protect/data/flutterBlue.dart';
 import 'package:protect/main.dart';
 import 'package:protect/models/ProtectUser.dart';
+import 'package:protect/screens/bluetoothScreen.dart';
 import 'package:protect/screens/login+signupScreens/firstScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
 import 'package:protect/services/firestore_service.dart';
+import 'package:flutter_blue/flutter_blue.dart' as blue;
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -20,11 +22,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   int protectPoints = 0;
   String data = "";
 
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     populateCurrentUser();
+
   }
 
   Future<void> _signOut(BuildContext context) async {
@@ -166,21 +170,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Text("Bluetooth"),
                     color: Colors.blue,
                     onPressed: (){
-                      var device = FlutterBluetooth(isOnline: false);
-                      device.turnDeviceOn();
-                      data = device.getFeed();
-                      setState(() {
-                        data = data;
-                      });
-                      device.scanForNearbyDevices();
-                      data = device.getFeed();
-                      setState(() {
-                        data = data;
-                      });
+//                      var device = FlutterBluetooth(isOnline: false);
+//                      device.turnDeviceOn();
+//                      data = device.getFeed();
+//                      setState(() {
+//                        data = data;
+//                      });
+//                      device.scanForNearbyDevices();
+//                      data = device.getFeed();
+//                      setState(() {
+//                        data = data;
+//                      });
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothScreen()));
                     },
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height / 25),
-                  Text("Bluetooth Data: $data")
+//                  Text("Bluetooth Data: $data"),
                 ],
               ),
             ),

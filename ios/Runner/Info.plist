@@ -64,5 +64,15 @@
     <string>Enable Protect to access your camera to capture a photo</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Enable Protect to access your image gallery to select an image</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Need BLE permission</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>Need BLE permission</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Need Location permission</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Need Location permission</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Need Location permission</string>
 </dict>
 </plist>
