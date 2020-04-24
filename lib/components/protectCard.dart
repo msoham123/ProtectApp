@@ -29,7 +29,7 @@ class protectCard extends StatelessWidget {
             padding: EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
             child: Container(
               height: MediaQuery.of(context).size.height/2.5,
-              width: MediaQuery.of(context).size.width/2.2  ,
+              width: MediaQuery.of(context).size.width/2.1  ,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30.0),
