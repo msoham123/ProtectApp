@@ -36,6 +36,7 @@ class _FeedScreenState extends State<FeedScreen>{
                 children: <Widget>[
                   SizedBox(height: 10.0),
                   _buildPost(0),
+                  _buildPost(1),
                 ],
               ),
             ),
@@ -47,62 +48,58 @@ class _FeedScreenState extends State<FeedScreen>{
 
   }
   Widget _buildPost(int index) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-      child: Container(
-        width: double.infinity,
-        height: 560.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(25.0),
-        ),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    leading: Container(
-                      width: 50.0,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black45,
-                            offset: Offset(0, 2),
-                            blurRadius: 6.0,
-                          ),
-                        ],
+    return Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height/1.7,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(25.0),
+      ),
+      child: Column(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              ListTile(
+                leading: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black45,
+                        offset: Offset(0, 2),
+                        blurRadius: 6.0,
                       ),
-                      child: CircleAvatar(
-                        child: ClipOval(
-                          child: Image(
-                            height: 50.0,
-                            width: 50.0,
-                            image: AssetImage(postName[index]),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    child: ClipOval(
+                      child: Image(
+                        height: 50.0,
+                        width: 50.0,
+                        image: AssetImage("assets/images/profile.png"),
+                        fit: BoxFit.cover,
                       ),
-                    ),
-                    title: Text(
-                      postName[index],
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text("${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}"),
-                    trailing: IconButton(
-                      icon: Icon(Icons.more_horiz),
-                      color: Colors.black,
-                      onPressed: () => print('More'),
                     ),
                   ),
-                  InkWell(
-                    onDoubleTap: () => print('Like post'),
-                    onTap: () {
+                ),
+                title: Text(
+                  postName[index],
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text("${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}"),
+                trailing: IconButton(
+                  icon: Icon(Icons.more_horiz),
+                  color: Colors.black,
+                  onPressed: () => print('More'),
+                ),
+              ),
+              InkWell(
+                onDoubleTap: () => print('Like post'),
+                onTap: () {
 //                      Navigator.push(
 //                        context,
 //                        MaterialPageRoute(
@@ -111,32 +108,31 @@ class _FeedScreenState extends State<FeedScreen>{
 //                          ),
 //                        ),
 //                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(10.0),
-                      width: double.infinity,
-                      height: 400.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black45,
-                            offset: Offset(0, 5),
-                            blurRadius: 8.0,
-                          ),
-                        ],
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/reef.png"),
-                          fit: BoxFit.contain,
-                        ),
+                },
+                child: Container(
+                  margin: EdgeInsets.all(10.0),
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height/2.5,
+                  decoration: BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(25.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black45,
+                        offset: Offset(0, 5),
+                        blurRadius: 1.0,
                       ),
+                    ],
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/reef.png"),
+                      fit: BoxFit.contain,
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
