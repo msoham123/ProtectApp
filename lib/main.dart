@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:protect/auth_widget.dart';
-import 'package:protect/screens/firstScreen.dart';
 import 'package:protect/screens/protectScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:protect/services/firebase_auth_service.dart';
