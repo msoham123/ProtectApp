@@ -106,7 +106,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/key.png'
+        iconAssetPath: ''
     ),
     slider.PageModel(
         color: Colors.deepPurpleAccent,
@@ -124,7 +124,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/wallet.png'),
+        iconAssetPath: ''),
     slider.PageModel(
       color: Colors.deepPurpleAccent,
       heroAssetPath: 'assets/images/network.svg',
@@ -140,7 +140,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
             color: Colors.white,
             fontSize: 18.0,
           )),
-      iconAssetPath: 'assets/shopping_cart.png',
+      iconAssetPath: '',
     ),
   ];
 

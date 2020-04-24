@@ -2,45 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:protect/constant.dart';
 import 'package:protect/components/my_header.dart';
 import 'package:protect/components/counter.dart';
-import 'package:protect/data/co2API.dart';
-import 'package:protect/models/co2_model.dart';
 import 'package:protect/screens/newsScreen.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 
-class ClimateChangeScreen extends StatefulWidget {
+class GreatBarrierReefScreen extends StatefulWidget {
   @override
-  _ClimateChangeScreenState createState() => _ClimateChangeScreenState();
+  _GreatBarrierReefScreenState createState() => _GreatBarrierReefScreenState();
 }
 
-class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
+class _GreatBarrierReefScreenState extends State<GreatBarrierReefScreen> {
   String selectedCountry = 'United States';
   TextEditingController paymentController = new TextEditingController();
   double _paymentAmount = 0.0;
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
-  bool _loading = true;
-  CO2Model carbonEmissionData;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    fetchCarbonEmissionData();
-  }
-
-  void fetchCarbonEmissionData() async {
-    Climate climateAPI = new Climate();
-    carbonEmissionData = await climateAPI.fetchCarbonEmissionData();
-    setState(() {
-      _loading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Climate Change",
+          "Great Barrier Reef",
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
@@ -53,21 +34,31 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
             Stack(
               children: <Widget>[
                 MyHeader(
-                  image: "./assets/icons/environment.svg",
+                  image: "",
                   textTop: "",
                   textBottom: "",
                 ),
                 Positioned(
+                  left: MediaQuery.of(context).size.width / 69,
+                  top: MediaQuery.of(context).size.height / 9,
+                  child: Image.asset("assets/images/reef.png",
+                    fit: BoxFit.contain,
+//                    height:MediaQuery.of(context).size.height/1 ,
+                    width: MediaQuery.of(context).size.width /1.03,
+                  ),
+                ),
+                Positioned(
                   left: MediaQuery.of(context).size.width / 15,
-                  top: MediaQuery.of(context).size.height / 15,
+                  top: MediaQuery.of(context).size.height / 55,
                   child: Text(
-                    "Protect the environment",
+                    "Protect the largest marine \necosystem on the planet",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 23,
                         fontWeight: FontWeight.w700),
                   ),
                 ),
+
               ],
             ),
             GestureDetector(
@@ -76,7 +67,7 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        NewsScreen(searchQuery: "climate change"),
+                        NewsScreen(searchQuery: "great barrier reef"),
                   ),
                 );
               },
@@ -114,7 +105,7 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Climate Change Impact\n",
+                              text: "Great Barrier Reef Statistics\n",
                               style: kTitleTextstyle,
                             ),
                             TextSpan(
@@ -150,23 +141,23 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                         ),
                       ],
                     ),
-                    child: _loading ? CircularProgressIndicator() : Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Counter(
                           color: kInfectedColor,
-                          number: carbonEmissionData.tenTearsAgo,
-                          title: "10YR AGO",
+                          number: 1046,
+                          title: "Number of \nSpecies of \n     Coral",
                         ),
                         Counter(
                           color: kDeathColor,
-                          number: carbonEmissionData.oneYearAgo,
-                          title: "1YR AGO",
+                          number: 87,
+                          title: "Dead Reefs\n\n  ",
                         ),
                         Counter(
                           color: kDeathColor,
-                          number: carbonEmissionData.current,
-                          title: "TODAY",
+                          number: 46,
+                          title: "Species \n Extinct\n",
                         ),
                       ],
                     ),
@@ -181,6 +172,13 @@ class _ClimateChangeScreenState extends State<ClimateChangeScreen> {
                           style: kTitleTextstyle,
                         ),
                       ),
+//                      Text(
+//                        "See details",
+//                        style: TextStyle(
+//                          color: kPrimaryColor,
+//                          fontWeight: FontWeight.w600,
+//                        ),
+//                      ),
                     ],
                   ),
                   Container(

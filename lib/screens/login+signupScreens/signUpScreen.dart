@@ -11,7 +11,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-
   TextEditingController nameController;
   TextEditingController ageController;
   TextEditingController emailController;
@@ -29,49 +28,51 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Future<void> createUserWithEmailAndPassword(BuildContext context) async {
     int userAge = int.parse(ageController.text.trim());
-      try {
-        final auth = Provider.of<FirebaseAuthService>(context, listen: false);
-        final user = await auth.createUserWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim());
-        final firestore = Provider.of<FirestoreService>(context, listen: false);
-        firestore.updateUserData(uid: user.uid, full_name: nameController.text.trim(), age: userAge);
-        if (user != null) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => IntroSliderScreen(),
-            ),
-          );
-        }
-      } catch (e) {
-        print(e);
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Center(child: Text("Error")),
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Flexible(child: Text("Please fill in all boxes")),
-                ],
-              ),
-              actions: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    FlatButton(
-                      child: Text("Try Again"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            );
-          },
+    try {
+      final auth = Provider.of<FirebaseAuthService>(context, listen: false);
+      final user = await auth.createUserWithEmailAndPassword(
+          emailController.text.trim(), passwordController.text.trim());
+      final firestore = Provider.of<FirestoreService>(context, listen: false);
+      firestore.updateUserData(
+          uid: user.uid, full_name: nameController.text.trim(), age: userAge);
+      if (user != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => IntroSliderScreen(),
+          ),
         );
       }
+    } catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Center(child: Text("Error")),
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Flexible(child: Text("Please fill in all boxes")),
+              ],
+            ),
+            actions: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  FlatButton(
+                    child: Text("Try Again"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -151,11 +152,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         obscureText: false,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
-                              borderSide:
-                              BorderSide(color: Colors.grey, width: 1.0)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 1.0),
+                          ),
                           enabledBorder: OutlineInputBorder(
-                              borderSide:
-                              BorderSide(color: Colors.grey, width: 1.0)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 1.0),
+                          ),
                           labelText: "Full name",
                           hintText: "John Doe",
                           labelStyle: TextStyle(

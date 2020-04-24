@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:protect/main.dart';
 import 'package:protect/models/ProtectUser.dart';
 import 'package:protect/screens/login+signupScreens/firstScreen.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     try {
       final _auth = Provider.of<FirebaseAuthService>(context, listen: false);
       await _auth.signOut();
+      MyApp.currentIndex = 0;
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => FirstScreen()));
     } catch (e) {
