@@ -3,6 +3,7 @@ import 'package:protect/constant.dart';
 import 'package:protect/components/my_header.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:protect/components/counter.dart';
+import 'package:protect/screens/newsScreen.dart';
 import 'package:protect/screens/protects/corona_info_screen.dart';
 
 class CoronavirusScreen extends StatefulWidget {
@@ -107,7 +108,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InfoScreen()));
+                        MaterialPageRoute(builder: (context) => NewsScreen()));
                   },
                   child: Container(
                     padding:
