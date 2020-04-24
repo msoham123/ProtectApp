@@ -3,8 +3,10 @@ import 'package:protect/constant.dart';
 import 'package:protect/components/my_header.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:protect/components/counter.dart';
+import 'package:protect/data/covidAPI.dart';
 import 'package:protect/screens/newsScreen.dart';
 import 'package:protect/screens/protects/corona_info_screen.dart';
+import 'package:protect/models/covid_country_model.dart';
 
 class CoronavirusScreen extends StatefulWidget {
   @override
@@ -12,7 +14,24 @@ class CoronavirusScreen extends StatefulWidget {
 }
 
 class _CoronavirusScreenState extends State<CoronavirusScreen> {
-  String selectedCountry = 'United States';
+  String selectedCountry = 'USA';
+  CountryModel selectedCountryData;
+  bool _isloading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchCOVIDData(selectedCountry);
+  }
+
+  Future<CountryModel> fetchCOVIDData(String selectedCountry) async {
+    COVID api = new COVID();
+    selectedCountryData = await api.fetchCountry(selectedCountry);
+    setState(() {
+      _isloading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +75,8 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       underline: SizedBox(),
                       icon: SvgPicture.asset("./assets/icons/dropdown.svg"),
                       value: selectedCountry,
-                      items: [
-                        'Indonesia',
-                        'Bangladesh',
-                        'United States',
-                        'Japan'
-                      ].map<DropdownMenuItem<String>>((String value) {
+                      items: ['USA', 'India', 'China', 'Canada', 'Russia']
+                          .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -70,6 +85,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       onChanged: (value) {
                         setState(() {
                           selectedCountry = value;
+                          fetchCOVIDData(selectedCountry);
                         });
                       },
                     ),
@@ -88,7 +104,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                   },
                   child: Container(
                     padding:
-                    EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
+                        EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
                     margin: EdgeInsets.only(left: 30.0),
                     child: Row(
                       children: <Widget>[
@@ -96,7 +112,11 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                           'Get more details',
                           style: TextStyle(color: Colors.white),
                         ),
-                        Icon(Icons.details,color: Colors.white, size: 18.0,),
+                        Icon(
+                          Icons.details,
+                          color: Colors.white,
+                          size: 18.0,
+                        ),
                       ],
                     ),
                     decoration: BoxDecoration(
@@ -107,12 +127,15 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => NewsScreen(searchQuery: "coronavirus")));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                NewsScreen(searchQuery: "coronavirus")));
                   },
                   child: Container(
                     padding:
-                    EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
+                        EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
                     margin: EdgeInsets.only(left: 5.0),
                     child: Row(
                       children: <Widget>[
@@ -120,7 +143,11 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                           'Get news',
                           style: TextStyle(color: Colors.white),
                         ),
-                        Icon(Icons.short_text,color: Colors.white, size: 18.0,),
+                        Icon(
+                          Icons.short_text,
+                          color: Colors.white,
+                          size: 18.0,
+                        ),
                       ],
                     ),
                     decoration: BoxDecoration(
@@ -178,26 +205,53 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ),
                       ],
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Counter(
-                          color: kInfectedColor,
-                          number: 1046,
-                          title: "Infected",
+                    child: _isloading
+                        ? CircularProgressIndicator()
+                        : Column(
+                          children: <Widget>[
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Counter(
+                                    color: kInfectedColor,
+                                    number: selectedCountryData.totalCases,
+                                    title: "Total Cases",
+                                  ),
+                                  Counter(
+                                    color: kDeathColor,
+                                    number: selectedCountryData.totalDeaths,
+                                    title: "Deaths",
+                                  ),
+                                  Counter(
+                                    color: kRecovercolor,
+                                    number: selectedCountryData.recovered,
+                                    title: "Recovered",
+                                  ),
+                                ],
+                              ),
+                            SizedBox(height: 15.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Counter(
+                                  color: kInfectedColor,
+                                  number: selectedCountryData.todayCases,
+                                  title: "Today Cases",
+                                ),
+                                Counter(
+                                  color: kDeathColor,
+                                  number: selectedCountryData.todayDeaths,
+                                  title: "Today Deaths",
+                                ),
+                                Counter(
+                                  color: kCriticalcolor,
+                                  number: selectedCountryData.critical,
+                                  title: "Critical",
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        Counter(
-                          color: kDeathColor,
-                          number: 87,
-                          title: "Deaths",
-                        ),
-                        Counter(
-                          color: kRecovercolor,
-                          number: 46,
-                          title: "Recovered",
-                        ),
-                      ],
-                    ),
                   ),
                   SizedBox(height: 20),
                   Row(
@@ -237,9 +291,8 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                       fit: BoxFit.contain,
                     ),
                   ),
-
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/10,
+                    height: MediaQuery.of(context).size.height / 10,
                   ),
                 ],
               ),
