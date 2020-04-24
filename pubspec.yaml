@@ -49,6 +49,7 @@ dependencies:
   flutter_bluetooth_serial:
   flutter_scan_bluetooth:
   wifi_info_plugin:
+  cached_network_image: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:

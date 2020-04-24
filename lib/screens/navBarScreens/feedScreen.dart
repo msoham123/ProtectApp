@@ -46,7 +46,7 @@ class _FeedScreenState extends State<FeedScreen> {
                 if (!snapshot.hasData)
                   return Center(child: CircularProgressIndicator());
                 return ListView.builder(
-                  itemExtent: MediaQuery.of(context).size.height / 1.9,
+                  itemExtent: MediaQuery.of(context).size.height / 1.75,
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (context, index) {
                     return Column(
