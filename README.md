@@ -2,6 +2,7 @@
 
 Hackathon Project
 Created by Soham Manoli and Aryan Vichare
+Link to Project Pitch: https://youtu.be/nhw6XkmbE2g
 
 ## Inspiration
 
