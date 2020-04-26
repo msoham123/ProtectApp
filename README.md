@@ -55,6 +55,6 @@ Install via APK:
 1. Download the APK from https://drive.google.com/file/d/1fQxN9892JmeRWLiZT1QYK1cQ2SuoeutJ/
 2. Open it using the Package Installer and install the app.
 3. Run the app!
-4 Login with the credentials: 
+4. Login with the credentials: 
 * email: `msoham123@gmail.com`
 * password: `msoham123`
