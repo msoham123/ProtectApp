@@ -38,6 +38,15 @@ We hope to release our app to the App Store and Google Play Store for people to 
 
 ## How to Install Protect - Android
 
+Install via APK:
+1. Download the APK from https://drive.google.com/file/d/1fQxN9892JmeRWLiZT1QYK1cQ2SuoeutJ/
+2. Open it using the Package Installer and install the app.
+3. Run the app!
+4. Login with the credentials: 
+* email: `msoham123@gmail.com`
+* password: `msoham123`
+
+
 Install Using Github: 
 1. Follow the Flutter installation guide from https://flutter.dev/docs/get-started/install 
 2. Clone this git repository
@@ -49,13 +58,5 @@ Install Using Github:
 8. Click on the green button and `run` the app.
 9. You should see `Running Gradle task 'assembleDebug'`.
 10. Login with the credentials: 
-* email: `msoham123@gmail.com`
-* password: `msoham123`
-
-Install via APK:
-1. Download the APK from https://drive.google.com/file/d/1fQxN9892JmeRWLiZT1QYK1cQ2SuoeutJ/
-2. Open it using the Package Installer and install the app.
-3. Run the app!
-4. Login with the credentials: 
 * email: `msoham123@gmail.com`
 * password: `msoham123`
