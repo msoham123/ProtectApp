@@ -83,7 +83,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
           toolbarColor: Colors.white,
           toolbarWidgetColor: Color.fromARGB(255, 104, 194, 249),
           activeControlsWidgetColor: Color.fromARGB(255, 104, 194, 249),
-          activeWidgetColor: Color.fromARGB(255, 104, 194, 249),
+//          activeWidgetColor: Color.fromARGB(255, 104, 194, 249),
         ));
     setState(() {
       imageFile = cropped ?? imageFile;
