@@ -16,38 +16,43 @@ class Counter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(6),
-          height: 25,
-          width: 25,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: color.withOpacity(.26),
-          ),
-          child: Container(
+    return Container(
+      width: MediaQuery.of(context).size.width/1.5,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(6),
+            height: 25,
+            width: 25,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.transparent,
-              border: Border.all(
-                color: color,
-                width: 2,
+              color: color.withOpacity(.26),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.transparent,
+                border: Border.all(
+                  color: color,
+                  width: 2,
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(height: 10),
-        Text(
-          "${NumberFormat("#,###").format(number)}",
-          style: TextStyle(
-            fontSize: 25,
-            color: color,
+          SizedBox(height: 10),
+          Text(
+            "${NumberFormat("#,###").format(number)}",
+            style: TextStyle(
+              fontSize: 25,
+              color: color,
+            ),
+            overflow: TextOverflow.clip,
           ),
-        ),
-        Text(title, style: kSubTextStyle),
-      ],
+          Text(title, style: kSubTextStyle),
+          SizedBox(height: 20),
+        ],
+      ),
     );
   }
 }

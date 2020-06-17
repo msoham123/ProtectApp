@@ -14,6 +14,7 @@ import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:share/share.dart';
 import 'package:protect/screens/bluetoothScreen.dart';
 
+import '../clinics.dart';
 import '../map_screen.dart';
 
 class CoronavirusScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
   String text = 'Join Protect to learn more about COVID-19 and contrubute towards it.';
   String subject = 'COVID-19';
+  bool showStat = false;
 
   @override
   void initState() {
@@ -314,14 +316,22 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ),
                       ),
                       Spacer(),
+                      FlatButton(
+                        child:  (!showStat) ? Text("Show Statistics") : Text("Hide Statistics"),
+                        textColor: Colors.blue,
+                        onPressed: (){
+                          setState(() {
+                            showStat = !showStat;
+                          });
+                        },
+                      ),
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height / 20),
-                  Container(
+                  if(showStat) Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                           offset: Offset(0, 4),
@@ -334,53 +344,40 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                         ? CircularProgressIndicator()
                         : Column(
                             children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Counter(
-                                    color: kInfectedColor,
-                                    number: selectedCountryData.totalCases,
-                                    title: "Total Cases",
-                                  ),
-                                  Counter(
-                                    color: kDeathColor,
-                                    number: selectedCountryData.totalDeaths,
-                                    title: "Deaths",
-                                  ),
-                                  Counter(
-                                    color: kRecovercolor,
-                                    number: selectedCountryData.recovered,
-                                    title: "Recovered",
-                                  ),
-                                ],
+                              Counter(
+                                color: kInfectedColor,
+                                number: selectedCountryData.totalCases,
+                                title: "Total Cases",
                               ),
-                              SizedBox(height: 15.0),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Counter(
-                                    color: kInfectedColor,
-                                    number: selectedCountryData.todayCases,
-                                    title: "Today Cases",
-                                  ),
-                                  Counter(
-                                    color: kDeathColor,
-                                    number: selectedCountryData.todayDeaths,
-                                    title: "Today Deaths",
-                                  ),
-                                  Counter(
-                                    color: kCriticalcolor,
-                                    number: selectedCountryData.critical,
-                                    title: "Critical",
-                                  ),
-                                ],
+                              Counter(
+                                color: kDeathColor,
+                                number: selectedCountryData.totalDeaths,
+                                title: "Deaths",
+                              ),
+                              Counter(
+                                color: kRecovercolor,
+                                number: selectedCountryData.recovered,
+                                title: "Recovered",
+                              ),
+                              Counter(
+                                color: kInfectedColor,
+                                number: selectedCountryData.todayCases,
+                                title: "Today Cases",
+                              ),
+                              Counter(
+                                color: kDeathColor,
+                                number: selectedCountryData.todayDeaths,
+                                title: "Today Deaths",
+                              ),
+                              Counter(
+                                color: kCriticalcolor,
+                                number: selectedCountryData.critical,
+                                title: "Critical",
                               ),
                             ],
                           ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height / 20),
+                  if(showStat) SizedBox(height: MediaQuery.of(context).size.height / 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -499,7 +496,36 @@ class _CoronavirusScreenState extends State<CoronavirusScreen> {
                             ),
                           )
                         ],
-                      )
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height/65,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ClinicScreen()));
+                            },
+                            child: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                              child: Icon(Icons.local_hospital, color: Colors.white, size: 30,),
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Flexible(
+                            child: Text(
+                              'Find Clinics Nearby',
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   ),
                   SizedBox(

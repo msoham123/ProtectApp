@@ -55,6 +55,8 @@ dependencies:
   dio:
   flutter_map:
   font_awesome_flutter:
+  geolocator:
+  google_maps_flutter:
 
 dev_dependencies:
   flutter_test:
