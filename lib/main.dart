@@ -42,9 +42,6 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-//      locale: DevicePreview.of(context).locale,
-//      builder: DevicePreview.appBuilder,
-        //activate for device preview
         debugShowCheckedModeBanner: false,
         title: 'Protect App',
         theme: ThemeData(
