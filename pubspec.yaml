@@ -57,6 +57,7 @@ dependencies:
   font_awesome_flutter:
   geolocator:
   google_maps_flutter:
+  url_launcher:
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/charities.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

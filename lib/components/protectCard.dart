@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:protect/screens/protectInfoScreen.dart';
 import 'dart:io' show Platform;
 
+import 'package:url_launcher/url_launcher.dart';
+
 class protectCard extends StatelessWidget {
   String protectTitle;
   var protectInformation;
@@ -83,59 +85,89 @@ class protectCard extends StatelessWidget {
   }
 }
 
-/*
-Container(
-        margin: EdgeInsets.all(10.0),
-        width: MediaQuery.of(context).size.width/1.5,
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black38,
-                    offset: Offset(0.0, 2.0),
-                    blurRadius: 10.0,
-                  ),
-                ],
-              ),
+class CharityCard extends StatelessWidget {
+  String charityTitle;
+  String imageFilePath;
+  String websiteURL;
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  CharityCard(
+      {@required this.imageFilePath,
+        @required this.charityTitle,
+        @required this.websiteURL,
+        });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+//          height: (Platform.isAndroid) ? MediaQuery.of(context).size.height/2.4 : MediaQuery.of(context).size.height/3.5,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30.0),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 3.0,
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 5.0,
+              )
+            ],
+          ),
+          child: GestureDetector(
+            onTap: () {
+              _launchURL(websiteURL);
+            },
+            child: Container(
+              width: MediaQuery.of(context).size.width / 2.1,
               child: Column(
                 children: <Widget>[
+                  Container(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0),
+                      ),
+                      child: Image.network(
+                        imageFilePath,
+                        height: 150,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            protectTitle,
-                            overflow: TextOverflow.visible,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 19.0,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.2,
-                            ),
-                          ),
-                        ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 10,
+                      ),
+                      Text(
+                        charityTitle,
+                        style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: Image(
-                      width: MediaQuery.of(context).size.width,
-                      image: protectImage.image,
-                      fit: BoxFit.fill,
-                    ),
+                  Text(
+                    'Tap to Donate',
+                    style: TextStyle(fontWeight: FontWeight.w600, color: Colors.blue),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/40,
                   ),
                 ],
               ),
-            )
-          ],
+            ),
+          ),
         ),
-      ),
- */
+      ],
+    );
+  }
+}
+
